@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Lisää Ryhmittymä",
+    "AddFirstFaction": "Lisää ensimmäinen ryhmittymäsi",
+    "NoFactions": "Ei ryhmittymiä saatavilla",
+    "NoSearchResults": "Hakua vastaavia ryhmittymiä ei löytynyt",
+    "NoPlayers": "Ei pelaajia saatavilla",
+    "NoFactionsHint": "Napsauta 'Lisää Ryhmittymä' luodaksesi uuden ryhmittymän.",
+    "Legend": "Mainetasot",
+    "OpenJournal": "Avaa Päiväkirja",
+    "ConfigFaction": "Määritä Ryhmittymä",
+    "DeleteFaction": "Poista Ryhmittymä",
+    "FactionName": "Ryhmittymän Nimi",
+    "LinkedJournal": "Linkitetty Päiväkirja",
+    "NoJournal": "Ei Päiväkirjaa",
+    "StartAtNeutral": "Uudet pelaajat aloittavat neutraaleina",
+    "StartAtNeutralHint": "Jos käytössä, uudet pelaajat aloittavat neutraalilla maineella tämän ryhmittymän kanssa. Muuten he aloittavat vihamielisinä.",
+    "UsePerPlayerMode": "Seuraa mainetta pelaajittain",
+    "UsePerPlayerModeHint": "Jos käytössä, jokaisella pelaajalla on oma maineensa tämän ryhmittymän kanssa. Muuten koko ryhmä jakaa yhteisen maineen.",
+    "Save": "Tallenna",
+    "Cancel": "Peruuta",
+    "Steps": "Maineportaat",
+    "StepsHint": "Mainetasojen määrä (pariton, 3-21). Esimerkit: 5 porrasta = -2 - +2, 7 porrasta = -3 - +3, 11 porrasta = -5 - +5.",
+    "RollTable": "Tila-arpataulu",
+    "NoRollTable": "Ei Arpataulu",
+    "RollTableHint": "Linkitä Arpataulu näyttääksesi dynaamisia tilakuvauksia mainearvoille.",
+    "CreateRollTable": "Luo Arpataulu oletusarvoilla",
+    "FactionIcon": "Ryhmittymän Kuvake",
+    "FactionIconHint": "Valitse kuva ryhmittymän kuvakkeeksi. Jätä tyhjäksi käyttääksesi oletuslippukuvaketta.",
+    "BrowseIcon": "Selaa kuvia",
+    "ClearIcon": "Tyhjennä kuvake",
+    "PerPlayerMode": "Pelaajittain",
+    "PerPlayerHint": "Tämä ryhmittymä käyttää pelaajittain-tilaa. Vaihda Pelaajat-välilehteen muuttaaksesi yksittäisten pelaajien mainetta.",
+    "GlobalMode": "Globaali",
+    "GroupReputation": "Ryhmän Maine",
+    "Factions": "Ryhmittymät",
+    "SearchFactions": "Etsi ryhmittymiä",
+    "SelectFaction": "Valitse Ryhmittymä",
+    "SelectFactionHint": "Valitse ryhmittymä sivupalkista nähdäksesi ja hallitaksesi sen mainetta.",
+    "CurrentValue": "Nykyinen Arvo",
+    "Rank": "Arvo",
+    "Mode": "Tila",
+    "PerPlayer": "Pelaajittain",
+    "Global": "Globaali",
+    "SetDirectly": "Aseta Suoraan",
+    "DragOrPreset": "Vedä tai käytä esiasetusta",
+    "ResetFaction": "Nollaa Ryhmittymä",
+    "ResetFactionConfirm": "Haluatko varmasti nollata tämän ryhmittymän maineen neutraaliksi?",
+    "ChangeLog": {
+      "Title": "Muutosloki",
+      "By": "tekijä",
+      "AddComment": "Lisää Kommentti",
+      "NoEntries": "Muutoksia ei ole vielä tallennettu"
+    },
+    "RollTableResult": "Arpataulun Tulos",
+    "CurrentRank": "Nykyinen Arvo",
+    "CurrentLevel": "Nykyinen",
+    "Tab": {
+      "Overview": "Yleiskatsaus",
+      "Players": "Pelaajat",
+      "Levels": "Tasot"
+    },
+    "ControlsLabel": "Ohjaimet",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Avaa Ryhmittymän Maine"
+    },
+
+    "Button": {
+      "OpenWindow": "Avaa Ryhmittymän Maine"
+    },
+
+    "Settings": {
+      "Title": "Asetukset",
+      "StartAtNeutral": "Aloita neutraalina oletuksena",
+      "StartAtNeutralHint": "Jos käytössä, uudet pelaajat aloittavat oletuksena neutraalilla maineella kaikkien ryhmittymien kanssa.",
+
+      "UsePerPlayerReputation": "Käytä pelaajittaista mainetta",
+      "UsePerPlayerReputationHint": "Jos käytössä, jokaisella pelaajalla on oma maineensa jokaisen ryhmittymän kanssa. Muuten koko ryhmä jakaa yhteisen maineen.",
+
+      "PostChatMessages": "Lähetä chat-viestejä",
+      "PostChatMessagesHint": "Jos käytössä, chat-viesti lähetetään kun maine muuttuu.",
+
+      "ChatMessageVisibility": "Chat-viestin näkyvyys",
+      "ChatMessageVisibilityHint": "Määrittää kuka voi nähdä maineenmuutosviestit chatissa.",
+
+      "GMOnly": "Vain PJ",
+      "AllPlayers": "Kaikki Pelaajat",
+      "PlayersOnly": "Vain Pelaajat",
+
+      "ReputationLevels": "Mainetasot",
+      "ReputationLevelsHint": "Määritä käytettävissä olevat mainetasot, niiden arvot, nimet ja värit.",
+
+      "AdvancedSettings": "Lisäasetukset",
+      "Configure": "Määritä",
+      "AdvancedSettingsHint": "Lisämääritykset mainejärjestelmälle, chat-viesteille ja muulle.",
+
+      "GeneralSettings": "Yleiset Asetukset",
+      "ChatSettings": "Chat-asetukset",
+
+      "LevelValue": "Arvo",
+      "LevelKey": "Avain",
+      "LevelLabel": "Nimi",
+      "LevelColor": "Väri",
+      "Controls": "Ohjaimet",
+
+      "AddLevel": "Lisää Taso",
+      "ResetToDefault": "Palauta Oletuksiin",
+      "MoveUp": "Siirrä Ylös",
+      "MoveDown": "Siirrä Alas",
+      "Delete": "Poista",
+      "Preview": "Esikatselu",
+
+      "ModeComparison": "Tilavertailu",
+      "Feature": "Ominaisuus",
+      "PerPlayerMode": "Pelaajittain-tila",
+      "GlobalMode": "Globaali Tila",
+      "IndividualReputation": "Yksilöllinen Maine",
+      "SharedReputation": "Jaettu Maine",
+      "Complexity": "Monimutkaisuus",
+      "Higher": "Korkeampi",
+      "Lower": "Matalampi",
+
+      "MessagePreview": "Viestin Esikatselu",
+      "SettingsSaved": "Asetukset tallennettu onnistuneesti.",
+
+      "PlayerAccess": "Pelaajien Pääsy",
+      "PlayerAccessHint": "Hallitsee voivatko pelaajat nähdä ja käyttää maine-ikkunaa.",
+      "PlayerAccessNone": "Piilotettu (vain PJ)",
+      "PlayerAccessView": "Vain katselu",
+      "PlayerAccessEdit": "Katselu ja muokkaus"
+    },
+
+    "Notifications": {
+      "FactionCreated": "Ryhmittymä '{name}' on luotu",
+      "FactionDeleted": "Ryhmittymä '{name}' on poistettu",
+      "JournalCreated": "Päiväkirjamerkintä '{name}' on luotu",
+      "RollTableCreated": "Arpataulu '{name}' on luotu",
+      "ReputationChanged": "{player}n maine ryhmittymän {faction} kanssa muuttui arvoon {level}",
+      "GlobalReputationChanged": "Ryhmän maine ryhmittymän {faction} kanssa muuttui arvoon {level}",
+      "OnlyGMCanChange": "Vain PJ voi muuttaa mainetta.",
+      "PleaseEnterName": "Anna nimi.",
+      "StepsMustBeOdd": "Portaiden määrän on oltava pariton (esim. 3, 5, 7, 9...).",
+      "StepsOutOfRange": "Portaiden määrän on oltava välillä 3-21.",
+      "ErrorChangingReputation": "Virhe maineen muuttamisessa.",
+      "ErrorSettingReputation": "Virhe maineen asettamisessa.",
+      "ErrorResettingFaction": "Virhe ryhmittymän nollaamisessa."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Poista Ryhmittymä",
+      "DeleteFactionContent": "Haluatko varmasti poistaa ryhmittymän '{name}'? Tämä poistaa kaikki mainetiedot tälle ryhmittymälle.",
+      "AddFactionTitle": "Lisää Uusi Ryhmittymä",
+      "AddFactionName": "Ryhmittymän Nimi",
+      "AddFactionNamePlaceholder": "esim. Kauppiaskilta",
+      "AddFactionJournal": "Päiväkirjamerkintä (valinnainen)",
+      "AddFactionRollTable": "Tila-arpataulu (valinnainen)",
+      "AddFactionStartNeutral": "Aloita neutraalina",
+      "Create": "Luo",
+      "CreateJournal": "Luo uusi Päiväkirjamerkintä",
+      "CreateRollTable": "Luo uusi Arpataulu",
+      "NewJournal": "Uusi Päiväkirja",
+      "NewRollTable": "Uusi Arpataulu"
+    },
+
+    "RankLabels": {
+      "Hostile": "Vihamielinen",
+      "Unfriendly": "Epäystävällinen",
+      "Wary": "Varovainen",
+      "NeutralMinus": "Neutraali-",
+      "Neutral": "Neutraali",
+      "NeutralPlus": "Neutraali+",
+      "Cordial": "Kohtelias",
+      "Friendly": "Ystävällinen",
+      "Allied": "Liittolainen"
+    },
+
+    "Chat": {
+      "ReputationChanged": "Maine muuttui:",
+      "PlayerWithFaction": "{player} ryhmittymän {faction} kanssa on nyt",
+      "GroupWithFaction": "Ryhmä ryhmittymän {faction} kanssa on nyt",
+      "Unknown": "Tuntematon"
+    }
+  }
+}

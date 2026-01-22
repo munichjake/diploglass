@@ -1,0 +1,23 @@
+# Claude / AI Assistant files
+.claude/
+
+# Development / Planning files
+archive/
+.designs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node (falls später verwendet)
+node_modules/
+package-lock.json
+diploglass.zip

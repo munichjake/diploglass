@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "세력 추가",
+    "AddFirstFaction": "첫 번째 세력 추가",
+    "NoFactions": "사용 가능한 세력 없음",
+    "NoSearchResults": "검색과 일치하는 세력 없음",
+    "NoPlayers": "사용 가능한 플레이어 없음",
+    "NoFactionsHint": "'세력 추가'를 클릭하여 새 세력을 만드세요.",
+    "Legend": "평판 레벨",
+    "OpenJournal": "저널 열기",
+    "ConfigFaction": "세력 설정",
+    "DeleteFaction": "세력 삭제",
+    "FactionName": "세력 이름",
+    "LinkedJournal": "연결된 저널",
+    "NoJournal": "저널 없음",
+    "StartAtNeutral": "새 플레이어는 중립에서 시작",
+    "StartAtNeutralHint": "활성화하면 새 플레이어는 이 세력에 대해 중립 평판으로 시작합니다. 그렇지 않으면 적대적으로 시작합니다.",
+    "UsePerPlayerMode": "플레이어별 평판 추적",
+    "UsePerPlayerModeHint": "활성화하면 각 플레이어는 이 세력에 대해 고유한 평판을 가집니다. 그렇지 않으면 전체 그룹이 공통 평판을 공유합니다.",
+    "Save": "저장",
+    "Cancel": "취소",
+    "Steps": "평판 단계",
+    "StepsHint": "평판 레벨 수 (3-21 사이의 홀수). 예: 5단계 = -2 ~ +2, 7단계 = -3 ~ +3, 11단계 = -5 ~ +5.",
+    "RollTable": "상태 롤테이블",
+    "NoRollTable": "롤테이블 없음",
+    "RollTableHint": "평판 값에 대한 동적 상태 설명을 표시하려면 롤테이블을 연결하세요.",
+    "CreateRollTable": "기본값으로 롤테이블 생성",
+    "FactionIcon": "세력 아이콘",
+    "FactionIconHint": "세력 아이콘으로 표시할 이미지를 선택하세요. 비워두면 기본 깃발 아이콘이 사용됩니다.",
+    "BrowseIcon": "이미지 찾아보기",
+    "ClearIcon": "아이콘 지우기",
+    "PerPlayerMode": "플레이어별",
+    "PerPlayerHint": "이 세력은 플레이어별 모드를 사용합니다. 개별 플레이어 평판을 변경하려면 플레이어 탭으로 전환하세요.",
+    "GlobalMode": "전역",
+    "GroupReputation": "그룹 평판",
+    "Factions": "세력",
+    "SearchFactions": "세력 검색",
+    "SelectFaction": "세력 선택",
+    "SelectFactionHint": "사이드바에서 세력을 선택하여 평판을 보고 관리하세요.",
+    "CurrentValue": "현재 값",
+    "Rank": "등급",
+    "Mode": "모드",
+    "PerPlayer": "플레이어별",
+    "Global": "전역",
+    "SetDirectly": "직접 설정",
+    "DragOrPreset": "드래그 또는 프리셋 사용",
+    "ResetFaction": "세력 초기화",
+    "ResetFactionConfirm": "이 세력의 평판을 중립으로 초기화하시겠습니까?",
+    "ChangeLog": {
+      "Title": "변경 기록",
+      "By": "작성자",
+      "AddComment": "댓글 추가",
+      "NoEntries": "아직 기록된 변경 사항 없음"
+    },
+    "RollTableResult": "롤테이블 결과",
+    "CurrentRank": "현재 등급",
+    "CurrentLevel": "현재",
+    "Tab": {
+      "Overview": "개요",
+      "Players": "플레이어",
+      "Levels": "레벨"
+    },
+    "ControlsLabel": "컨트롤",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "세력 평판 열기"
+    },
+
+    "Button": {
+      "OpenWindow": "세력 평판 열기"
+    },
+
+    "Settings": {
+      "Title": "설정",
+      "StartAtNeutral": "기본적으로 중립에서 시작",
+      "StartAtNeutralHint": "활성화하면 새 플레이어는 기본적으로 모든 세력에 대해 중립 평판으로 시작합니다.",
+
+      "UsePerPlayerReputation": "플레이어별 평판 사용",
+      "UsePerPlayerReputationHint": "활성화하면 각 플레이어는 각 세력에 대해 고유한 평판을 가집니다. 그렇지 않으면 전체 그룹이 공통 평판을 공유합니다.",
+
+      "PostChatMessages": "채팅 메시지 게시",
+      "PostChatMessagesHint": "활성화하면 평판이 변경될 때 채팅 메시지가 게시됩니다.",
+
+      "ChatMessageVisibility": "채팅 메시지 가시성",
+      "ChatMessageVisibilityHint": "채팅에서 평판 변경 메시지를 볼 수 있는 사람을 결정합니다.",
+
+      "GMOnly": "GM만",
+      "AllPlayers": "모든 플레이어",
+      "PlayersOnly": "플레이어만",
+
+      "ReputationLevels": "평판 레벨",
+      "ReputationLevelsHint": "사용 가능한 평판 레벨, 값, 라벨, 색상을 설정합니다.",
+
+      "AdvancedSettings": "고급 설정",
+      "Configure": "설정",
+      "AdvancedSettingsHint": "평판 시스템, 채팅 메시지 등의 고급 설정.",
+
+      "GeneralSettings": "일반 설정",
+      "ChatSettings": "채팅 설정",
+
+      "LevelValue": "값",
+      "LevelKey": "키",
+      "LevelLabel": "라벨",
+      "LevelColor": "색상",
+      "Controls": "컨트롤",
+
+      "AddLevel": "레벨 추가",
+      "ResetToDefault": "기본값으로 초기화",
+      "MoveUp": "위로 이동",
+      "MoveDown": "아래로 이동",
+      "Delete": "삭제",
+      "Preview": "미리보기",
+
+      "ModeComparison": "모드 비교",
+      "Feature": "기능",
+      "PerPlayerMode": "플레이어별 모드",
+      "GlobalMode": "전역 모드",
+      "IndividualReputation": "개별 평판",
+      "SharedReputation": "공유 평판",
+      "Complexity": "복잡도",
+      "Higher": "높음",
+      "Lower": "낮음",
+
+      "MessagePreview": "메시지 미리보기",
+      "SettingsSaved": "설정이 성공적으로 저장되었습니다.",
+
+      "PlayerAccess": "플레이어 접근",
+      "PlayerAccessHint": "플레이어가 평판 창을 보고 상호작용할 수 있는지 여부를 제어합니다.",
+      "PlayerAccessNone": "숨김 (GM만)",
+      "PlayerAccessView": "보기만",
+      "PlayerAccessEdit": "보기 및 편집"
+    },
+
+    "Notifications": {
+      "FactionCreated": "세력 '{name}'이(가) 생성되었습니다",
+      "FactionDeleted": "세력 '{name}'이(가) 삭제되었습니다",
+      "JournalCreated": "저널 '{name}'이(가) 생성되었습니다",
+      "RollTableCreated": "롤테이블 '{name}'이(가) 생성되었습니다",
+      "ReputationChanged": "{player}의 {faction}에 대한 평판이 {level}(으)로 변경되었습니다",
+      "GlobalReputationChanged": "그룹의 {faction}에 대한 평판이 {level}(으)로 변경되었습니다",
+      "OnlyGMCanChange": "GM만 평판을 변경할 수 있습니다.",
+      "PleaseEnterName": "이름을 입력해 주세요.",
+      "StepsMustBeOdd": "단계 수는 홀수여야 합니다 (예: 3, 5, 7, 9...).",
+      "StepsOutOfRange": "단계 수는 3에서 21 사이여야 합니다.",
+      "ErrorChangingReputation": "평판 변경 중 오류가 발생했습니다.",
+      "ErrorSettingReputation": "평판 설정 중 오류가 발생했습니다.",
+      "ErrorResettingFaction": "세력 초기화 중 오류가 발생했습니다."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "세력 삭제",
+      "DeleteFactionContent": "세력 '{name}'을(를) 삭제하시겠습니까? 이 세력의 모든 평판 데이터가 삭제됩니다.",
+      "AddFactionTitle": "새 세력 추가",
+      "AddFactionName": "세력 이름",
+      "AddFactionNamePlaceholder": "예: 상인 길드",
+      "AddFactionJournal": "저널 (선택사항)",
+      "AddFactionRollTable": "상태 롤테이블 (선택사항)",
+      "AddFactionStartNeutral": "중립에서 시작",
+      "Create": "생성",
+      "CreateJournal": "새 저널 생성",
+      "CreateRollTable": "새 롤테이블 생성",
+      "NewJournal": "새 저널",
+      "NewRollTable": "새 롤테이블"
+    },
+
+    "RankLabels": {
+      "Hostile": "적대",
+      "Unfriendly": "비우호",
+      "Wary": "경계",
+      "NeutralMinus": "중립-",
+      "Neutral": "중립",
+      "NeutralPlus": "중립+",
+      "Cordial": "정중",
+      "Friendly": "우호",
+      "Allied": "동맹"
+    },
+
+    "Chat": {
+      "ReputationChanged": "평판 변경됨:",
+      "PlayerWithFaction": "{player}의 {faction}에 대한 평판은",
+      "GroupWithFaction": "그룹의 {faction}에 대한 평판은",
+      "Unknown": "알 수 없음"
+    }
+  }
+}

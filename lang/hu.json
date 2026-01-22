@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Frakció Hozzáadása",
+    "AddFirstFaction": "Add hozzá az első frakciódat",
+    "NoFactions": "Nincs elérhető frakció",
+    "NoSearchResults": "Nincs a keresésnek megfelelő frakció",
+    "NoPlayers": "Nincs elérhető játékos",
+    "NoFactionsHint": "Kattints a 'Frakció Hozzáadása' gombra új frakció létrehozásához.",
+    "Legend": "Hírnév Szintek",
+    "OpenJournal": "Napló Megnyitása",
+    "ConfigFaction": "Frakció Beállítása",
+    "DeleteFaction": "Frakció Törlése",
+    "FactionName": "Frakció Neve",
+    "LinkedJournal": "Kapcsolt Napló",
+    "NoJournal": "Nincs Napló",
+    "StartAtNeutral": "Új játékosok semlegesen kezdenek",
+    "StartAtNeutralHint": "Ha engedélyezve van, az új játékosok semleges hírnévvel kezdenek ennél a frakciónál. Ellenkező esetben ellenségesként kezdenek.",
+    "UsePerPlayerMode": "Játékosonkénti hírnév követése",
+    "UsePerPlayerModeHint": "Ha engedélyezve van, minden játékosnak saját hírneve van ezzel a frakcióval. Ellenkező esetben az egész csoport közös hírnevet oszt meg.",
+    "Save": "Mentés",
+    "Cancel": "Mégse",
+    "Steps": "Hírnév Lépések",
+    "StepsHint": "Hírnév szintek száma (páratlan, 3-21). Példák: 5 lépés = -2-től +2-ig, 7 lépés = -3-tól +3-ig, 11 lépés = -5-től +5-ig.",
+    "RollTable": "Státusz Dobótábla",
+    "NoRollTable": "Nincs Dobótábla",
+    "RollTableHint": "Kapcsolj egy Dobótáblát a hírnév értékek dinamikus státusz leírásainak megjelenítéséhez.",
+    "CreateRollTable": "Dobótábla létrehozása alapértelmezett értékekkel",
+    "FactionIcon": "Frakció Ikon",
+    "FactionIconHint": "Válassz egy képet frakció ikonként. Hagyd üresen az alapértelmezett zászló ikon használatához.",
+    "BrowseIcon": "Kép tallózása",
+    "ClearIcon": "Ikon törlése",
+    "PerPlayerMode": "Játékosonként",
+    "PerPlayerHint": "Ez a frakció játékosonkénti módot használ. Válts a Játékosok fülre az egyéni játékos hírnév módosításához.",
+    "GlobalMode": "Globális",
+    "GroupReputation": "Csoport Hírnév",
+    "Factions": "Frakciók",
+    "SearchFactions": "Frakciók keresése",
+    "SelectFaction": "Válassz Frakciót",
+    "SelectFactionHint": "Válassz egy frakciót az oldalsávból a hírnév megtekintéséhez és kezeléséhez.",
+    "CurrentValue": "Jelenlegi Érték",
+    "Rank": "Rang",
+    "Mode": "Mód",
+    "PerPlayer": "Játékosonként",
+    "Global": "Globális",
+    "SetDirectly": "Közvetlen Beállítás",
+    "DragOrPreset": "Húzd vagy használj presetet",
+    "ResetFaction": "Frakció Visszaállítása",
+    "ResetFactionConfirm": "Biztosan visszaállítod ennek a frakciónak a hírnevet semlegesre?",
+    "ChangeLog": {
+      "Title": "Változásnapló",
+      "By": "által",
+      "AddComment": "Megjegyzés Hozzáadása",
+      "NoEntries": "Még nincs rögzített változás"
+    },
+    "RollTableResult": "Dobótábla Eredmény",
+    "CurrentRank": "Jelenlegi Rang",
+    "CurrentLevel": "Jelenlegi",
+    "Tab": {
+      "Overview": "Áttekintés",
+      "Players": "Játékosok",
+      "Levels": "Szintek"
+    },
+    "ControlsLabel": "Vezérlők",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Frakció Hírnév Megnyitása"
+    },
+
+    "Button": {
+      "OpenWindow": "Frakció Hírnév Megnyitása"
+    },
+
+    "Settings": {
+      "Title": "Beállítások",
+      "StartAtNeutral": "Alapértelmezetten semlegesen kezd",
+      "StartAtNeutralHint": "Ha engedélyezve van, az új játékosok alapértelmezetten semleges hírnévvel kezdenek minden frakciónál.",
+
+      "UsePerPlayerReputation": "Játékosonkénti hírnév használata",
+      "UsePerPlayerReputationHint": "Ha engedélyezve van, minden játékosnak saját hírneve van minden frakcióval. Ellenkező esetben az egész csoport közös hírnevet oszt meg.",
+
+      "PostChatMessages": "Chat üzenetek küldése",
+      "PostChatMessagesHint": "Ha engedélyezve van, chat üzenet kerül küldésre hírnév változáskor.",
+
+      "ChatMessageVisibility": "Chat üzenet láthatósága",
+      "ChatMessageVisibilityHint": "Meghatározza, ki láthatja a hírnév változás üzeneteket a chatben.",
+
+      "GMOnly": "Csak JM",
+      "AllPlayers": "Minden Játékos",
+      "PlayersOnly": "Csak Játékosok",
+
+      "ReputationLevels": "Hírnév Szintek",
+      "ReputationLevelsHint": "Az elérhető hírnév szintek, értékek, címkék és színek beállítása.",
+
+      "AdvancedSettings": "Haladó Beállítások",
+      "Configure": "Beállítás",
+      "AdvancedSettingsHint": "Haladó konfiguráció a hírnév rendszerhez, chat üzenetekhez és egyebekhez.",
+
+      "GeneralSettings": "Általános Beállítások",
+      "ChatSettings": "Chat Beállítások",
+
+      "LevelValue": "Érték",
+      "LevelKey": "Kulcs",
+      "LevelLabel": "Címke",
+      "LevelColor": "Szín",
+      "Controls": "Vezérlők",
+
+      "AddLevel": "Szint Hozzáadása",
+      "ResetToDefault": "Visszaállítás Alapértelmezettre",
+      "MoveUp": "Felfelé Mozgatás",
+      "MoveDown": "Lefelé Mozgatás",
+      "Delete": "Törlés",
+      "Preview": "Előnézet",
+
+      "ModeComparison": "Mód Összehasonlítás",
+      "Feature": "Funkció",
+      "PerPlayerMode": "Játékosonkénti Mód",
+      "GlobalMode": "Globális Mód",
+      "IndividualReputation": "Egyéni Hírnév",
+      "SharedReputation": "Megosztott Hírnév",
+      "Complexity": "Komplexitás",
+      "Higher": "Magasabb",
+      "Lower": "Alacsonyabb",
+
+      "MessagePreview": "Üzenet Előnézet",
+      "SettingsSaved": "Beállítások sikeresen mentve.",
+
+      "PlayerAccess": "Játékos Hozzáférés",
+      "PlayerAccessHint": "Szabályozza, hogy a játékosok láthatják és kezelhetik-e a hírnév ablakot.",
+      "PlayerAccessNone": "Rejtett (csak JM)",
+      "PlayerAccessView": "Csak megtekintés",
+      "PlayerAccessEdit": "Megtekintés és szerkesztés"
+    },
+
+    "Notifications": {
+      "FactionCreated": "'{name}' frakció létrehozva",
+      "FactionDeleted": "'{name}' frakció törölve",
+      "JournalCreated": "'{name}' napló bejegyzés létrehozva",
+      "RollTableCreated": "'{name}' Dobótábla létrehozva",
+      "ReputationChanged": "{player} hírneve a(z) {faction} frakcióval {level} lett",
+      "GlobalReputationChanged": "A csoport hírneve a(z) {faction} frakcióval {level} lett",
+      "OnlyGMCanChange": "Csak a JM változtathatja a hírnevet.",
+      "PleaseEnterName": "Kérlek, adj meg egy nevet.",
+      "StepsMustBeOdd": "A lépések számának páratlannak kell lennie (pl. 3, 5, 7, 9...).",
+      "StepsOutOfRange": "A lépések számának 3 és 21 között kell lennie.",
+      "ErrorChangingReputation": "Hiba a hírnév változtatásakor.",
+      "ErrorSettingReputation": "Hiba a hírnév beállításakor.",
+      "ErrorResettingFaction": "Hiba a frakció visszaállításakor."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Frakció Törlése",
+      "DeleteFactionContent": "Biztosan törölni akarod a(z) '{name}' frakciót? Ez törli az összes hírnév adatot ehhez a frakcióhoz.",
+      "AddFactionTitle": "Új Frakció Hozzáadása",
+      "AddFactionName": "Frakció Neve",
+      "AddFactionNamePlaceholder": "pl. Kereskedő Céh",
+      "AddFactionJournal": "Napló Bejegyzés (opcionális)",
+      "AddFactionRollTable": "Státusz Dobótábla (opcionális)",
+      "AddFactionStartNeutral": "Semlegesen kezd",
+      "Create": "Létrehozás",
+      "CreateJournal": "Új Napló Bejegyzés létrehozása",
+      "CreateRollTable": "Új Dobótábla létrehozása",
+      "NewJournal": "Új Napló",
+      "NewRollTable": "Új Dobótábla"
+    },
+
+    "RankLabels": {
+      "Hostile": "Ellenséges",
+      "Unfriendly": "Barátságtalan",
+      "Wary": "Óvatos",
+      "NeutralMinus": "Semleges-",
+      "Neutral": "Semleges",
+      "NeutralPlus": "Semleges+",
+      "Cordial": "Udvarias",
+      "Friendly": "Barátságos",
+      "Allied": "Szövetséges"
+    },
+
+    "Chat": {
+      "ReputationChanged": "Hírnév megváltozott:",
+      "PlayerWithFaction": "{player} a(z) {faction} frakcióval most",
+      "GroupWithFaction": "A Csoport a(z) {faction} frakcióval most",
+      "Unknown": "Ismeretlen"
+    }
+  }
+}

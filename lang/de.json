@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Neue Fraktion",
+    "AddFirstFaction": "Erste Fraktion hinzufügen",
+    "NoFactions": "Keine Fraktionen vorhanden",
+    "NoSearchResults": "Keine Fraktionen entsprechen deiner Suche",
+    "NoPlayers": "Keine Spieler vorhanden",
+    "NoFactionsHint": "Klick auf 'Neue Fraktion', um eine Fraktion hinzuzufügen.",
+    "Legend": "Reputationsstufen",
+    "OpenJournal": "Journal öffnen",
+    "ConfigFaction": "Fraktion konfigurieren",
+    "DeleteFaction": "Fraktion löschen",
+    "FactionName": "Fraktionsname",
+    "LinkedJournal": "Verknüpfter Journal-Eintrag",
+    "NoJournal": "Kein Journal",
+    "StartAtNeutral": "Neue Spieler bei Neutral beginnen",
+    "StartAtNeutralHint": "Wenn aktiviert, beginnen neue Spieler bei dieser Fraktion mit neutraler Reputation. Andernfalls beginnen sie als feindlich.",
+    "UsePerPlayerMode": "Pro-Spieler Reputation verfolgen",
+    "UsePerPlayerModeHint": "Wenn aktiviert, hat jeder Spieler seine eigene Reputation bei dieser Fraktion. Andernfalls teilt sich die gesamte Gruppe eine gemeinsame Reputation.",
+    "Save": "Speichern",
+    "Cancel": "Abbrechen",
+    "Steps": "Reputationsstufen",
+    "StepsHint": "Anzahl der Reputationsstufen (muss ungerade sein, 3-21). Beispiele: 5 Stufen = -2 bis +2, 7 Stufen = -3 bis +3, 11 Stufen = -5 bis +5.",
+    "RollTable": "Status-Zufallstabelle",
+    "NoRollTable": "Keine Zufallstabelle",
+    "RollTableHint": "Verknüpfe eine Zufallstabelle, um dynamische Statusbeschreibungen für Reputationswerte anzuzeigen.",
+    "CreateRollTable": "Zufallstabelle mit Standardwerten erstellen",
+    "FactionIcon": "Fraktions-Symbol",
+    "FactionIconHint": "Wähle ein Bild als Fraktions-Symbol. Leer lassen für das Standard-Flaggen-Symbol.",
+    "BrowseIcon": "Bild auswählen",
+    "ClearIcon": "Symbol entfernen",
+    "PerPlayerMode": "Pro Spieler",
+    "PerPlayerHint": "Diese Fraktion verwendet den Pro-Spieler Modus. Wechsle zum Spieler-Tab, um die Reputation einzelner Spieler zu ändern.",
+    "GlobalMode": "Global",
+    "GroupReputation": "Gruppen-Reputation",
+    "Factions": "Fraktionen",
+    "SearchFactions": "Fraktionen suchen",
+    "SelectFaction": "Fraktion auswählen",
+    "SelectFactionHint": "Wähle eine Fraktion aus der Seitenleiste, um ihre Reputation anzuzeigen und zu verwalten.",
+    "CurrentValue": "Aktueller Wert",
+    "Rank": "Stufe",
+    "Mode": "Modus",
+    "PerPlayer": "Pro Spieler",
+    "Global": "Global",
+    "SetDirectly": "Direkt setzen",
+    "DragOrPreset": "Ziehen oder Preset wählen",
+    "ResetFaction": "Fraktion zurücksetzen",
+    "ResetFactionConfirm": "Bist du sicher, dass du die Reputation dieser Fraktion auf Neutral zurücksetzen möchtest?",
+    "ChangeLog": {
+      "Title": "Änderungs-Log",
+      "By": "von",
+      "AddComment": "Kommentar hinzufügen",
+      "NoEntries": "Noch keine Änderungen aufgezeichnet"
+    },
+    "RollTableResult": "Zufallstabellen-Ergebnis",
+    "CurrentRank": "Aktuelle Stufe",
+    "CurrentLevel": "Aktuell",
+    "Tab": {
+      "Overview": "Übersicht",
+      "Players": "Spieler",
+      "Levels": "Stufen"
+    },
+    "ControlsLabel": "Steuerung",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Fraktions-Reputation öffnen"
+    },
+
+    "Button": {
+      "OpenWindow": "Fraktions-Reputation öffnen"
+    },
+
+    "Settings": {
+      "Title": "Einstellungen",
+      "StartAtNeutral": "Standardmäßig bei Neutral beginnen",
+      "StartAtNeutralHint": "Wenn aktiviert, beginnen neue Spieler standardmäßig bei allen Fraktionen mit neutraler Reputation.",
+
+      "UsePerPlayerReputation": "Pro-Spieler Reputation verwenden",
+      "UsePerPlayerReputationHint": "Wenn aktiviert, hat jeder Spieler seine eigene Reputation bei jeder Fraktion. Andernfalls teilt sich die ganze Gruppe eine gemeinsame Reputation.",
+
+      "PostChatMessages": "Chat-Nachrichten senden",
+      "PostChatMessagesHint": "Wenn aktiviert, wird eine Chat-Nachricht gesendet, wenn sich die Reputation ändert.",
+
+      "ChatMessageVisibility": "Chat-Nachrichten Sichtbarkeit",
+      "ChatMessageVisibilityHint": "Bestimmt, wer die Reputation-Änderungen im Chat sehen kann.",
+
+      "GMOnly": "Nur Spielleiter",
+      "AllPlayers": "Alle Spieler",
+      "PlayersOnly": "Nur Spieler",
+
+      "ReputationLevels": "Reputationsstufen",
+      "ReputationLevelsHint": "Konfiguriere die verfügbaren Reputationsstufen, ihre Werte, Bezeichnungen und Farben.",
+
+      "AdvancedSettings": "Erweiterte Einstellungen",
+      "Configure": "Konfigurieren",
+      "AdvancedSettingsHint": "Erweiterte Konfiguration für Reputation-System, Chat-Nachrichten und mehr.",
+
+      "GeneralSettings": "Allgemeine Einstellungen",
+      "ChatSettings": "Chat-Einstellungen",
+
+      "LevelValue": "Wert",
+      "LevelKey": "Schlüssel",
+      "LevelLabel": "Bezeichnung",
+      "LevelColor": "Farbe",
+      "Controls": "Aktionen",
+
+      "AddLevel": "Stufe hinzufügen",
+      "ResetToDefault": "Standardwerte wiederherstellen",
+      "MoveUp": "Nach oben",
+      "MoveDown": "Nach unten",
+      "Delete": "Löschen",
+      "Preview": "Vorschau",
+
+      "ModeComparison": "Vergleich der Modi",
+      "Feature": "Funktion",
+      "PerPlayerMode": "Pro-Spieler Modus",
+      "GlobalMode": "Globaler Modus",
+      "IndividualReputation": "Individuelle Reputation",
+      "SharedReputation": "Geteilte Reputation",
+      "Complexity": "Komplexität",
+      "Higher": "Höher",
+      "Lower": "Niedriger",
+
+      "MessagePreview": "Nachrichten-Vorschau",
+      "SettingsSaved": "Einstellungen erfolgreich gespeichert.",
+
+      "PlayerAccess": "Spieler-Zugriff",
+      "PlayerAccessHint": "Bestimmt, ob Spieler das Reputations-Fenster sehen und damit interagieren können.",
+      "PlayerAccessNone": "Versteckt (nur Spielleiter)",
+      "PlayerAccessView": "Nur ansehen",
+      "PlayerAccessEdit": "Ansehen und bearbeiten"
+    },
+
+    "Notifications": {
+      "FactionCreated": "Fraktion '{name}' wurde erstellt",
+      "FactionDeleted": "Fraktion '{name}' wurde gelöscht",
+      "JournalCreated": "Journal-Eintrag '{name}' wurde erstellt",
+      "RollTableCreated": "Zufallstabelle '{name}' wurde erstellt",
+      "ReputationChanged": "Reputation von {player} mit {faction} geändert zu {level}",
+      "GlobalReputationChanged": "Gruppen-Reputation mit {faction} geändert zu {level}",
+      "OnlyGMCanChange": "Nur der Spielleiter kann Reputationen ändern.",
+      "PleaseEnterName": "Bitte gib einen Namen ein.",
+      "StepsMustBeOdd": "Die Anzahl der Stufen muss ungerade sein (z.B. 3, 5, 7, 9...).",
+      "StepsOutOfRange": "Die Anzahl der Stufen muss zwischen 3 und 21 liegen.",
+      "ErrorChangingReputation": "Fehler beim Ändern der Reputation.",
+      "ErrorSettingReputation": "Fehler beim Setzen der Reputation.",
+      "ErrorResettingFaction": "Fehler beim Zurücksetzen der Fraktion."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Fraktion löschen",
+      "DeleteFactionContent": "Bist du sicher, dass du die Fraktion '{name}' löschen möchtest? Dies wird alle Reputationsdaten für diese Fraktion entfernen.",
+      "AddFactionTitle": "Neue Fraktion hinzufügen",
+      "AddFactionName": "Fraktionsname",
+      "AddFactionNamePlaceholder": "z.B. Handelsgilde",
+      "AddFactionJournal": "Journal-Eintrag (optional)",
+      "AddFactionRollTable": "Status-Zufallstabelle (optional)",
+      "AddFactionStartNeutral": "Bei Neutral beginnen",
+      "Create": "Erstellen",
+      "CreateJournal": "Neuen Journal-Eintrag erstellen",
+      "CreateRollTable": "Neue Zufallstabelle erstellen",
+      "NewJournal": "Neues Journal",
+      "NewRollTable": "Neue Zufallstabelle"
+    },
+
+    "RankLabels": {
+      "Hostile": "Feindlich",
+      "Unfriendly": "Unfreundlich",
+      "Wary": "Misstrauisch",
+      "NeutralMinus": "Neutral-",
+      "Neutral": "Neutral",
+      "NeutralPlus": "Neutral+",
+      "Cordial": "Freundlich",
+      "Friendly": "Wohlwollend",
+      "Allied": "Verbündet"
+    },
+
+    "Chat": {
+      "ReputationChanged": "Reputation geändert:",
+      "PlayerWithFaction": "{player} mit {faction} ist jetzt",
+      "GroupWithFaction": "Die Gruppe mit {faction} ist jetzt",
+      "Unknown": "Unbekannt"
+    }
+  }
+}

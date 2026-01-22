@@ -1,0 +1,362 @@
+<div class="fr-container">
+<div class="fr-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="fr-nav">
+        <div class="fr-nav-header">
+            <b>{{localize "DIPLOGLASS.Factions"}}</b>
+            {{#if hasGMPermission}}
+            <button class="fr-btn fr-btn-small" data-action="addFaction" title="{{localize 'DIPLOGLASS.AddFaction'}}">
+                <i class="fas fa-plus"></i>
+            </button>
+            {{/if}}
+        </div>
+
+        <div class="fr-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="fr-faction-search" placeholder="{{localize 'DIPLOGLASS.SearchFactions'}}..." />
+        </div>
+
+        <div class="fr-nav-list">
+            {{#if factions}}
+                {{#each factions as |faction|}}
+                <div class="fr-nav-item {{#if faction.isSelected}}active{{/if}}" data-faction-id="{{faction.id}}" data-action="selectFaction">
+                    <div class="fr-nav-item-name">
+                        <div class="fr-glyph">
+                            {{#if faction.icon}}<img src="{{faction.icon}}" alt="">{{else}}<i class="fas fa-flag"></i>{{/if}}
+                        </div>
+                        <span>{{faction.name}}</span>
+                    </div>
+                    <span class="fr-pill {{faction.pillClass}}">
+                        <span class="fr-pdot"></span>
+                        {{faction.displayValue}}
+                    </span>
+                </div>
+                {{/each}}
+            {{else}}
+                <div class="fr-no-factions-nav">
+                    <p>{{localize "DIPLOGLASS.NoFactions"}}</p>
+                </div>
+            {{/if}}
+        </div>
+
+        {{#if hasGMPermission}}
+        <div class="fr-nav-footer">
+            <button class="fr-btn fr-btn-small" data-action="openSettings" title="{{localize 'DIPLOGLASS.Settings.Title'}}">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+        {{/if}}
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="fr-main">
+        {{#if selectedFaction}}
+        <!-- Header Card -->
+        <div class="fr-header-card">
+            <div class="fr-title-block">
+                <div class="fr-glyph">
+                    {{#if selectedFaction.icon}}<img src="{{selectedFaction.icon}}" alt="">{{else}}<i class="fas fa-flag"></i>{{/if}}
+                </div>
+                <div class="fr-title-text">
+                    <h1>{{selectedFaction.name}}</h1>
+                    <p>
+                        {{#if usePerPlayerReputation}}
+                            <i class="fas fa-users"></i> {{localize "DIPLOGLASS.PerPlayerMode"}}
+                        {{else}}
+                            <i class="fas fa-globe"></i> {{localize "DIPLOGLASS.GlobalMode"}}
+                        {{/if}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="fr-main-actions">
+                <span class="fr-pill {{selectedFaction.pillClass}}">
+                    <span class="fr-pdot"></span>
+                    {{selectedFaction.rankLabel}} ({{selectedFaction.displayValue}})
+                </span>
+                {{#if selectedFaction.journal}}
+                <button class="fr-btn" data-action="openJournal" data-journal-id="{{selectedFaction.journalId}}" title="{{localize 'DIPLOGLASS.OpenJournal'}}">
+                    <i class="fas fa-book"></i>
+                </button>
+                {{/if}}
+                {{#if hasGMPermission}}
+                <button class="fr-btn fr-btn-danger" data-action="deleteFaction" data-faction-id="{{selectedFaction.id}}" title="{{localize 'DIPLOGLASS.DeleteFaction'}}">
+                    <i class="fas fa-trash"></i>
+                </button>
+                {{/if}}
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="fr-tabs-bar">
+            <span class="fr-tab active" data-tab="overview" data-action="switchTab">{{localize "DIPLOGLASS.Tab.Overview"}}</span>
+            {{#if usePerPlayerReputation}}
+            <span class="fr-tab" data-tab="players" data-action="switchTab">{{localize "DIPLOGLASS.Tab.Players"}}</span>
+            {{/if}}
+            <span class="fr-tab" data-tab="levels" data-action="switchTab">{{localize "DIPLOGLASS.Tab.Levels"}}</span>
+        </div>
+
+        <!-- Tab Content: Overview -->
+        <div class="fr-tab-content active" data-tab-content="overview">
+        <!-- Work Grid -->
+        <div class="fr-work-grid">
+            <!-- Controls Panel -->
+            <section class="fr-panel">
+                <div class="fr-panel-header">
+                    <b>{{localize "DIPLOGLASS.ControlsLabel"}}</b>
+                    {{#if canEdit}}
+                    {{#unless usePerPlayerReputation}}
+                    <div class="fr-panel-header-right">
+                        <button class="fr-btn" data-action="changeReputation" data-faction-id="{{selectedFaction.id}}" data-user-id="{{currentUserId}}" data-change="-1">
+                            <i class="fas fa-minus"></i> 1
+                        </button>
+                        <button class="fr-btn" data-action="changeReputation" data-faction-id="{{selectedFaction.id}}" data-user-id="{{currentUserId}}" data-change="1">
+                            <i class="fas fa-plus"></i> 1
+                        </button>
+                    </div>
+                    {{/unless}}
+                    {{/if}}
+                </div>
+                <div class="fr-panel-body">
+                    <div style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+                        <div>
+                            <div style="color:var(--muted);font-size:12.5px;font-weight:900">{{localize "DIPLOGLASS.CurrentValue"}}</div>
+                            <div style="font-size:32px;font-weight:1000;margin-top:6px">{{selectedFaction.displayValue}}</div>
+                        </div>
+                        <div class="fr-box fr-rank-box" style="--rank-color: {{selectedFaction.rankColor}}; min-width: 100px;">
+                            <small>{{localize "DIPLOGLASS.Rank"}}</small>
+                            <b>{{selectedFaction.rankLabel}}</b>
+                        </div>
+                    </div>
+
+                    {{#if canEdit}}
+                    {{#if usePerPlayerReputation}}
+                    <!-- Per-Player Mode: Show hint to use Players tab -->
+                    <div class="fr-per-player-hint">
+                        <i class="fas fa-users"></i>
+                        <p>{{localize "DIPLOGLASS.PerPlayerHint"}}</p>
+                        <button class="fr-btn fr-btn-primary" data-action="switchTab" data-tab="players">
+                            <i class="fas fa-arrow-right"></i> {{localize "DIPLOGLASS.Tab.Players"}}
+                        </button>
+                    </div>
+                    {{else}}
+                    <!-- Global Mode: Show slider and presets -->
+                    <div class="fr-slider-box">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+                            <b style="font-size:12.5px">{{localize "DIPLOGLASS.SetDirectly"}}</b>
+                            <span style="color:var(--muted);font-size:12px;font-weight:900">{{localize "DIPLOGLASS.DragOrPreset"}}</span>
+                        </div>
+                        <input type="range"
+                               min="{{selectedFaction.minValue}}"
+                               max="{{selectedFaction.maxValue}}"
+                               step="1"
+                               value="{{selectedFaction.reputation}}"
+                               data-action="setReputation"
+                               data-faction-id="{{selectedFaction.id}}"
+                               data-user-id="{{currentUserId}}" />
+                        <div class="fr-scale">
+                            {{#each reputationLevels as |level|}}
+                            <span>{{level.label}}</span>
+                            {{/each}}
+                        </div>
+                        <div class="fr-presets">
+                            {{#each reputationLevels as |level|}}
+                            <span class="fr-preset"
+                                  data-action="setPreset"
+                                  data-faction-id="{{../selectedFaction.id}}"
+                                  data-user-id="{{../currentUserId}}"
+                                  data-value="{{level.value}}">
+                                {{level.label}} ({{level.value}})
+                            </span>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+                        <button class="fr-btn" data-action="resetFaction" data-faction-id="{{selectedFaction.id}}">
+                            <i class="fas fa-undo"></i> {{localize "DIPLOGLASS.ResetFaction"}}
+                        </button>
+                        {{#if hasGMPermission}}
+                        <button class="fr-btn" data-action="configFaction" data-faction-id="{{selectedFaction.id}}">
+                            <i class="fas fa-cog"></i> {{localize "DIPLOGLASS.ConfigFaction"}}
+                        </button>
+                        {{/if}}
+                    </div>
+                    {{/if}}
+                </div>
+            </section>
+
+            <!-- Log Panel -->
+            <aside class="fr-panel fr-log-panel">
+                <div class="fr-log-header">
+                    <span>{{localize "DIPLOGLASS.ChangeLog.Title"}}</span>
+                </div>
+                <div class="fr-log-body">
+                    {{#if selectedFaction.rollTableStatus}}
+                    <div class="fr-log-entry fr-log-status">
+                        <span><i class="fas fa-dice"></i> {{selectedFaction.rollTableStatus}}</span>
+                        <i>{{localize "DIPLOGLASS.RollTableResult"}}</i>
+                    </div>
+                    {{/if}}
+                    <div class="fr-log-entry fr-log-current">
+                        <span>{{localize "DIPLOGLASS.CurrentRank"}}: <b>{{selectedFaction.rankLabel}}</b></span>
+                        <i>{{selectedFaction.displayValue}}</i>
+                    </div>
+
+                    {{#if selectedFaction.changeLog.length}}
+                    <div class="fr-log-divider"></div>
+                    <div class="fr-log-history">
+                        {{#each selectedFaction.changeLog as |entry|}}
+                        <div class="fr-log-change {{entry.changeClass}}">
+                            <div class="fr-log-change-header">
+                                <span class="fr-log-change-icon"><i class="fas {{entry.changeIcon}}"></i></span>
+                                <span class="fr-log-change-values">{{entry.oldValue}} → {{entry.newValue}}</span>
+                                <span class="fr-log-change-date">{{entry.date}}</span>
+                            </div>
+                            <div class="fr-log-change-meta">
+                                <span>{{entry.userName}}</span>
+                                <span class="fr-log-change-by">{{localize "DIPLOGLASS.ChangeLog.By"}} {{entry.changedByName}}</span>
+                            </div>
+                            {{#if entry.comment}}
+                            <div class="fr-log-comment">
+                                <i class="fas fa-comment"></i>
+                                <span>{{entry.comment}}</span>
+                            </div>
+                            {{/if}}
+                            {{#if ../hasGMPermission}}
+                            <button class="fr-log-comment-btn" data-action="addComment" data-faction-id="{{../selectedFaction.id}}" data-entry-id="{{entry.id}}" title="{{localize 'DIPLOGLASS.ChangeLog.AddComment'}}">
+                                <i class="fas {{#if entry.comment}}fa-edit{{else}}fa-comment{{/if}}"></i>
+                            </button>
+                            {{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                    {{else}}
+                    <div class="fr-log-empty">
+                        <span>{{localize "DIPLOGLASS.ChangeLog.NoEntries"}}</span>
+                    </div>
+                    {{/if}}
+                </div>
+            </aside>
+        </div>
+        </div>
+
+        <!-- Tab Content: Players (Per-Player Mode) -->
+        {{#if usePerPlayerReputation}}
+        <div class="fr-tab-content" data-tab-content="players">
+            <div class="fr-players-view">
+                <div class="fr-panel">
+                    <div class="fr-panel-header">
+                        <b>{{localize "DIPLOGLASS.Tab.Players"}}</b>
+                        <span style="color:var(--muted);font-size:11px">{{selectedFaction.name}}</span>
+                    </div>
+                    <div class="fr-panel-body">
+                        <div class="fr-players-list">
+                            {{#each playerReputations as |player|}}
+                            <div class="fr-player-row">
+                                <div class="fr-player-info">
+                                    <div class="fr-player-avatar">
+                                        {{#if player.avatar}}
+                                        <img src="{{player.avatar}}" alt="{{player.name}}">
+                                        {{else}}
+                                        <span class="fr-player-initial">{{player.initial}}</span>
+                                        {{/if}}
+                                    </div>
+                                    <span class="fr-player-name">{{player.name}}</span>
+                                </div>
+                                <div class="fr-player-reputation">
+                                    <span class="fr-pill {{player.pillClass}}">
+                                        <span class="fr-pdot"></span>
+                                        {{player.rankLabel}} ({{player.displayValue}})
+                                    </span>
+                                </div>
+                                {{#if ../canEdit}}
+                                <div class="fr-player-controls">
+                                    <button class="fr-btn fr-btn-small" data-action="changeReputation" data-faction-id="{{../selectedFaction.id}}" data-user-id="{{player.actorId}}" data-change="-1">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button class="fr-btn fr-btn-small" data-action="changeReputation" data-faction-id="{{../selectedFaction.id}}" data-user-id="{{player.actorId}}" data-change="1">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                {{/if}}
+                            </div>
+                            {{/each}}
+                            {{#unless playerReputations}}
+                            <div class="fr-no-players">
+                                <p>{{localize "DIPLOGLASS.NoPlayers"}}</p>
+                            </div>
+                            {{/unless}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
+        <!-- Tab Content: Levels -->
+        <div class="fr-tab-content" data-tab-content="levels">
+            <div class="fr-levels-view">
+                <div class="fr-panel">
+                    <div class="fr-panel-header">
+                        <b>{{localize "DIPLOGLASS.Tab.Levels"}}</b>
+                        <span style="color:var(--muted);font-size:11px">{{selectedFaction.name}}</span>
+                    </div>
+                    <div class="fr-panel-body">
+                        <div class="fr-levels-list">
+                            {{#each selectedFaction.levelDetails as |level|}}
+                            <div class="fr-level-row {{#if ../canEdit}}{{#unless ../usePerPlayerReputation}}fr-level-clickable{{/unless}}{{/if}}"
+                                 {{#if ../canEdit}}
+                                 {{#unless ../usePerPlayerReputation}}
+                                 data-action="setPreset"
+                                 data-faction-id="{{../selectedFaction.id}}"
+                                 data-user-id="{{../currentUserId}}"
+                                 data-value="{{level.value}}"
+                                 {{/unless}}
+                                 {{/if}}>
+                                <div class="fr-level-value" style="background-color: {{level.color}};">{{level.displayValue}}</div>
+                                <div class="fr-level-info">
+                                    <span class="fr-level-label">{{level.label}}</span>
+                                </div>
+                                {{#if ../usePerPlayerReputation}}
+                                    {{#if level.actorsAtLevel.length}}
+                                    <div class="fr-level-actors-list">
+                                        {{#each level.actorsAtLevel}}
+                                        <span class="fr-level-actor-badge" style="--player-color: {{this.color}};">{{this.name}}</span>
+                                        {{/each}}
+                                    </div>
+                                    {{/if}}
+                                {{else}}
+                                    {{#if level.isCurrent}}
+                                    <span class="fr-level-current">{{localize "DIPLOGLASS.CurrentLevel"}}</span>
+                                    {{/if}}
+                                {{/if}}
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{else}}
+        <!-- No Faction Selected -->
+        <div class="fr-no-faction-selected">
+            <div class="fr-empty-state">
+                <i class="fas fa-hand-pointer"></i>
+                <h3>{{localize "DIPLOGLASS.SelectFaction"}}</h3>
+                <p>{{localize "DIPLOGLASS.SelectFactionHint"}}</p>
+                {{#if hasGMPermission}}
+                {{#unless factions}}
+                <button class="fr-btn fr-btn-primary" data-action="addFaction">
+                    <i class="fas fa-plus"></i> {{localize "DIPLOGLASS.AddFirstFaction"}}
+                </button>
+                {{/unless}}
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+    </main>
+</div>
+</div>

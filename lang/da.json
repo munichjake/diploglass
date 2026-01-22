@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Tilføj Fraktion",
+    "AddFirstFaction": "Tilføj din første fraktion",
+    "NoFactions": "Ingen fraktioner tilgængelige",
+    "NoSearchResults": "Ingen fraktioner matcher din søgning",
+    "NoPlayers": "Ingen spillere tilgængelige",
+    "NoFactionsHint": "Klik på 'Tilføj Fraktion' for at oprette en ny fraktion.",
+    "Legend": "Omdømme Niveauer",
+    "OpenJournal": "Åbn Journal",
+    "ConfigFaction": "Konfigurer Fraktion",
+    "DeleteFaction": "Slet Fraktion",
+    "FactionName": "Fraktionsnavn",
+    "LinkedJournal": "Tilknyttet Journal",
+    "NoJournal": "Ingen Journal",
+    "StartAtNeutral": "Nye spillere starter som neutrale",
+    "StartAtNeutralHint": "Hvis aktiveret, starter nye spillere med neutralt omdømme hos denne fraktion. Ellers starter de som fjendtlige.",
+    "UsePerPlayerMode": "Spor omdømme per spiller",
+    "UsePerPlayerModeHint": "Hvis aktiveret, har hver spiller sit eget omdømme med denne fraktion. Ellers deler hele gruppen et fælles omdømme.",
+    "Save": "Gem",
+    "Cancel": "Annuller",
+    "Steps": "Omdømme Trin",
+    "StepsHint": "Antal omdømme niveauer (ulige tal, 3-21). Eksempler: 5 trin = -2 til +2, 7 trin = -3 til +3, 11 trin = -5 til +5.",
+    "RollTable": "Status Rulletabel",
+    "NoRollTable": "Ingen Rulletabel",
+    "RollTableHint": "Link en Rulletabel for at vise dynamiske statusbeskrivelser for omdømme værdier.",
+    "CreateRollTable": "Opret Rulletabel med standardværdier",
+    "FactionIcon": "Fraktionsikon",
+    "FactionIconHint": "Vælg et billede der skal vises som fraktionsikon. Efterlad tomt for at bruge standard flagikon.",
+    "BrowseIcon": "Gennemse billeder",
+    "ClearIcon": "Ryd ikon",
+    "PerPlayerMode": "Per Spiller",
+    "PerPlayerHint": "Denne fraktion bruger per-spiller tilstand. Skift til Spillere fanen for at ændre individuelle spilleres omdømme.",
+    "GlobalMode": "Global",
+    "GroupReputation": "Gruppe Omdømme",
+    "Factions": "Fraktioner",
+    "SearchFactions": "Søg fraktioner",
+    "SelectFaction": "Vælg en Fraktion",
+    "SelectFactionHint": "Vælg en fraktion fra sidepanelet for at se og administrere dens omdømme.",
+    "CurrentValue": "Nuværende Værdi",
+    "Rank": "Rang",
+    "Mode": "Tilstand",
+    "PerPlayer": "Per Spiller",
+    "Global": "Global",
+    "SetDirectly": "Indstil Direkte",
+    "DragOrPreset": "Træk eller brug forudindstilling",
+    "ResetFaction": "Nulstil Fraktion",
+    "ResetFactionConfirm": "Er du sikker på at du vil nulstille denne fraktions omdømme til neutralt?",
+    "ChangeLog": {
+      "Title": "Ændringslog",
+      "By": "af",
+      "AddComment": "Tilføj Kommentar",
+      "NoEntries": "Ingen ændringer registreret endnu"
+    },
+    "RollTableResult": "Rulletabel Resultat",
+    "CurrentRank": "Nuværende Rang",
+    "CurrentLevel": "Nuværende",
+    "Tab": {
+      "Overview": "Oversigt",
+      "Players": "Spillere",
+      "Levels": "Niveauer"
+    },
+    "ControlsLabel": "Kontroller",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Åbn Fraktions Omdømme"
+    },
+
+    "Button": {
+      "OpenWindow": "Åbn Fraktions Omdømme"
+    },
+
+    "Settings": {
+      "Title": "Indstillinger",
+      "StartAtNeutral": "Start som neutral som standard",
+      "StartAtNeutralHint": "Hvis aktiveret, starter nye spillere som standard med neutralt omdømme hos alle fraktioner.",
+
+      "UsePerPlayerReputation": "Brug omdømme per spiller",
+      "UsePerPlayerReputationHint": "Hvis aktiveret, har hver spiller sit eget omdømme med hver fraktion. Ellers deler hele gruppen et fælles omdømme.",
+
+      "PostChatMessages": "Send chat-beskeder",
+      "PostChatMessagesHint": "Hvis aktiveret, sendes en chat-besked når omdømmet ændres.",
+
+      "ChatMessageVisibility": "Chat-besked synlighed",
+      "ChatMessageVisibilityHint": "Bestemmer hvem der kan se omdømme ændringsbeskeder i chatten.",
+
+      "GMOnly": "Kun GM",
+      "AllPlayers": "Alle Spillere",
+      "PlayersOnly": "Kun Spillere",
+
+      "ReputationLevels": "Omdømme Niveauer",
+      "ReputationLevelsHint": "Konfigurer de tilgængelige omdømme niveauer, deres værdier, etiketter og farver.",
+
+      "AdvancedSettings": "Avancerede Indstillinger",
+      "Configure": "Konfigurer",
+      "AdvancedSettingsHint": "Avanceret konfiguration for omdømme system, chat-beskeder og mere.",
+
+      "GeneralSettings": "Generelle Indstillinger",
+      "ChatSettings": "Chat Indstillinger",
+
+      "LevelValue": "Værdi",
+      "LevelKey": "Nøgle",
+      "LevelLabel": "Etiket",
+      "LevelColor": "Farve",
+      "Controls": "Kontroller",
+
+      "AddLevel": "Tilføj Niveau",
+      "ResetToDefault": "Nulstil til Standard",
+      "MoveUp": "Flyt Op",
+      "MoveDown": "Flyt Ned",
+      "Delete": "Slet",
+      "Preview": "Forhåndsvisning",
+
+      "ModeComparison": "Tilstandssammenligning",
+      "Feature": "Funktion",
+      "PerPlayerMode": "Per-Spiller Tilstand",
+      "GlobalMode": "Global Tilstand",
+      "IndividualReputation": "Individuelt Omdømme",
+      "SharedReputation": "Delt Omdømme",
+      "Complexity": "Kompleksitet",
+      "Higher": "Højere",
+      "Lower": "Lavere",
+
+      "MessagePreview": "Besked Forhåndsvisning",
+      "SettingsSaved": "Indstillinger gemt succesfuldt.",
+
+      "PlayerAccess": "Spilleradgang",
+      "PlayerAccessHint": "Styrer om spillere kan se og interagere med omdømme vinduet.",
+      "PlayerAccessNone": "Skjult (kun GM)",
+      "PlayerAccessView": "Kun visning",
+      "PlayerAccessEdit": "Visning og redigering"
+    },
+
+    "Notifications": {
+      "FactionCreated": "Fraktion '{name}' er blevet oprettet",
+      "FactionDeleted": "Fraktion '{name}' er blevet slettet",
+      "JournalCreated": "Journalindlæg '{name}' er blevet oprettet",
+      "RollTableCreated": "Rulletabel '{name}' er blevet oprettet",
+      "ReputationChanged": "{player}s omdømme med {faction} ændret til {level}",
+      "GlobalReputationChanged": "Gruppens omdømme med {faction} ændret til {level}",
+      "OnlyGMCanChange": "Kun GM kan ændre omdømme.",
+      "PleaseEnterName": "Indtast venligst et navn.",
+      "StepsMustBeOdd": "Antallet af trin skal være ulige (f.eks. 3, 5, 7, 9...).",
+      "StepsOutOfRange": "Antallet af trin skal være mellem 3 og 21.",
+      "ErrorChangingReputation": "Fejl ved ændring af omdømme.",
+      "ErrorSettingReputation": "Fejl ved indstilling af omdømme.",
+      "ErrorResettingFaction": "Fejl ved nulstilling af fraktion."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Slet Fraktion",
+      "DeleteFactionContent": "Er du sikker på at du vil slette fraktionen '{name}'? Dette vil fjerne alle omdømme data for denne fraktion.",
+      "AddFactionTitle": "Tilføj Ny Fraktion",
+      "AddFactionName": "Fraktionsnavn",
+      "AddFactionNamePlaceholder": "f.eks. Handelsgilde",
+      "AddFactionJournal": "Journalindlæg (valgfrit)",
+      "AddFactionRollTable": "Status Rulletabel (valgfrit)",
+      "AddFactionStartNeutral": "Start som neutral",
+      "Create": "Opret",
+      "CreateJournal": "Opret nyt Journalindlæg",
+      "CreateRollTable": "Opret ny Rulletabel",
+      "NewJournal": "Ny Journal",
+      "NewRollTable": "Ny Rulletabel"
+    },
+
+    "RankLabels": {
+      "Hostile": "Fjendtlig",
+      "Unfriendly": "Uvenlig",
+      "Wary": "Forsigtig",
+      "NeutralMinus": "Neutral-",
+      "Neutral": "Neutral",
+      "NeutralPlus": "Neutral+",
+      "Cordial": "Høflig",
+      "Friendly": "Venlig",
+      "Allied": "Allieret"
+    },
+
+    "Chat": {
+      "ReputationChanged": "Omdømme ændret:",
+      "PlayerWithFaction": "{player} med {faction} er nu",
+      "GroupWithFaction": "Gruppen med {faction} er nu",
+      "Unknown": "Ukendt"
+    }
+  }
+}

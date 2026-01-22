@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Update module.json version
+        run: |
+          jq '.version = "${{ steps.version.outputs.version }}" | .download = "https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.version }}/diploglass.zip"' module.json > module.tmp.json
+          mv module.tmp.json module.json
+
+      - name: Create ZIP
+        run: |
+          zip -r diploglass.zip \
+            module.json \
+            scripts/ \
+            styles/ \
+            templates/ \
+            lang/ \
+            screenshots/ \
+            README.md \
+            CHANGELOG.md \
+            LICENSE
+
+      - name: Upload Release Asset via API
+        run: |
+          curl -X PATCH \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/v${{ steps.version.outputs.version }}" \
+            -d '{"draft":false,"prerelease":false}'
+
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            --data-binary @diploglass.zip \
+            "https://uploads.github.com/repos/${{ github.repository }}/releases/v${{ steps.version.outputs.version }}/assets?name=diploglass.zip"

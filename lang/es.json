@@ -1,0 +1,179 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Añadir Facción",
+    "AddFirstFaction": "Añade tu primera facción",
+    "NoFactions": "No hay facciones disponibles",
+    "NoSearchResults": "Ninguna facción coincide con tu búsqueda",
+    "NoPlayers": "No hay jugadores disponibles",
+    "NoFactionsHint": "Haz clic en 'Añadir Facción' para crear una nueva facción.",
+    "Legend": "Niveles de Reputación",
+    "OpenJournal": "Abrir Diario",
+    "ConfigFaction": "Configurar Facción",
+    "DeleteFaction": "Eliminar Facción",
+    "FactionName": "Nombre de Facción",
+    "LinkedJournal": "Entrada de Diario Vinculada",
+    "NoJournal": "Sin Diario",
+    "StartAtNeutral": "Los nuevos jugadores comienzan en neutral",
+    "StartAtNeutralHint": "Si está activado, los nuevos jugadores comenzarán con reputación neutral con esta facción. De lo contrario, comenzarán como hostiles.",
+    "UsePerPlayerMode": "Rastrear reputación por jugador",
+    "UsePerPlayerModeHint": "Si está activado, cada jugador tiene su propia reputación con esta facción. De lo contrario, todo el grupo comparte una reputación común.",
+    "Save": "Guardar",
+    "Cancel": "Cancelar",
+    "Steps": "Pasos de Reputación",
+    "StepsHint": "Número de niveles de reputación (debe ser impar, 3-21). Ejemplos: 5 pasos = -2 a +2, 7 pasos = -3 a +3, 11 pasos = -5 a +5.",
+    "RollTable": "Tabla de Tiradas de Estado",
+    "NoRollTable": "Sin Tabla de Tiradas",
+    "RollTableHint": "Vincula una Tabla de Tiradas para mostrar descripciones dinámicas de estado según los valores de reputación.",
+    "CreateRollTable": "Crear Tabla de Tiradas con valores predeterminados",
+    "FactionIcon": "Icono de Facción",
+    "FactionIconHint": "Selecciona una imagen para mostrar como icono de la facción. Déjalo vacío para usar el icono de bandera predeterminado.",
+    "BrowseIcon": "Buscar una imagen",
+    "ClearIcon": "Limpiar icono",
+    "PerPlayerMode": "Por Jugador",
+    "PerPlayerHint": "Esta facción usa el modo por jugador. Cambia a la pestaña Jugadores para cambiar las reputaciones individuales.",
+    "GlobalMode": "Global",
+    "GroupReputation": "Reputación del Grupo",
+    "Factions": "Facciones",
+    "SearchFactions": "Buscar facciones",
+    "SelectFaction": "Selecciona una Facción",
+    "SelectFactionHint": "Elige una facción de la barra lateral para ver y gestionar su reputación.",
+    "CurrentValue": "Valor Actual",
+    "Rank": "Rango",
+    "Mode": "Modo",
+    "PerPlayer": "Por Jugador",
+    "Global": "Global",
+    "SetDirectly": "Establecer Directamente",
+    "DragOrPreset": "Arrastra o usa preset",
+    "ResetFaction": "Reiniciar Facción",
+    "ResetFactionConfirm": "¿Estás seguro de que quieres reiniciar la reputación de esta facción a neutral?",
+    "ChangeLog": {
+      "Title": "Registro de Cambios",
+      "By": "por",
+      "AddComment": "Añadir Comentario",
+      "NoEntries": "Aún no hay cambios registrados"
+    },
+    "RollTableResult": "Resultado de Tabla de Tiradas",
+    "CurrentRank": "Rango Actual",
+    "CurrentLevel": "Actual",
+    "Tab": {
+      "Overview": "Resumen",
+      "Players": "Jugadores",
+      "Levels": "Niveles"
+    },
+    "ControlsLabel": "Controles",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Abrir Reputación de Facciones"
+    },
+
+    "Button": {
+      "OpenWindow": "Abrir Reputación de Facciones"
+    },
+
+    "Settings": {
+      "Title": "Configuración",
+      "StartAtNeutral": "Comenzar en neutral por defecto",
+      "StartAtNeutralHint": "Si está activado, los nuevos jugadores comenzarán con reputación neutral con todas las facciones por defecto.",
+
+      "UsePerPlayerReputation": "Usar reputación por jugador",
+      "UsePerPlayerReputationHint": "Si está activado, cada jugador tiene su propia reputación con cada facción. De lo contrario, todo el grupo comparte una reputación común.",
+
+      "PostChatMessages": "Publicar mensajes en el chat",
+      "PostChatMessagesHint": "Si está activado, se publicará un mensaje en el chat cuando cambie la reputación.",
+
+      "ChatMessageVisibility": "Visibilidad de mensajes del chat",
+      "ChatMessageVisibilityHint": "Determina quién puede ver los mensajes de cambio de reputación en el chat.",
+
+      "GMOnly": "Solo DJ",
+      "AllPlayers": "Todos los Jugadores",
+      "PlayersOnly": "Solo Jugadores",
+
+      "ReputationLevels": "Niveles de Reputación",
+      "ReputationLevelsHint": "Configura los niveles de reputación disponibles, sus valores, etiquetas y colores.",
+
+      "AdvancedSettings": "Configuración Avanzada",
+      "Configure": "Configurar",
+      "AdvancedSettingsHint": "Configuración avanzada para el sistema de reputación, mensajes de chat y más.",
+
+      "GeneralSettings": "Configuración General",
+      "ChatSettings": "Configuración del Chat",
+
+      "LevelValue": "Valor",
+      "LevelKey": "Clave",
+      "LevelLabel": "Etiqueta",
+      "LevelColor": "Color",
+      "Controls": "Controles",
+
+      "AddLevel": "Añadir Nivel",
+      "ResetToDefault": "Restablecer Valores",
+      "MoveUp": "Mover Arriba",
+      "MoveDown": "Mover Abajo",
+      "Delete": "Eliminar",
+      "Preview": "Vista Previa",
+
+      "ModeComparison": "Comparación de Modos",
+      "Feature": "Característica",
+      "PerPlayerMode": "Modo Por Jugador",
+      "GlobalMode": "Modo Global",
+      "IndividualReputation": "Reputación Individual",
+      "SharedReputation": "Reputación Compartida",
+      "Complexity": "Complejidad",
+      "Higher": "Mayor",
+      "Lower": "Menor",
+
+      "MessagePreview": "Vista Previa del Mensaje",
+      "SettingsSaved": "Configuración guardada correctamente.",
+
+      "PlayerAccess": "Acceso de Jugadores",
+      "PlayerAccessHint": "Controla si los jugadores pueden ver e interactuar con la ventana de reputación.",
+      "PlayerAccessNone": "Oculto (solo DJ)",
+      "PlayerAccessView": "Solo ver",
+      "PlayerAccessEdit": "Ver y editar"
+    },
+
+    "Notifications": {
+      "FactionCreated": "La facción '{name}' ha sido creada",
+      "FactionDeleted": "La facción '{name}' ha sido eliminada",
+      "RollTableCreated": "La Tabla de Tiradas '{name}' ha sido creada",
+      "ReputationChanged": "La reputación de {player} con {faction} cambió a {level}",
+      "GlobalReputationChanged": "La reputación del grupo con {faction} cambió a {level}",
+      "OnlyGMCanChange": "Solo el DJ puede cambiar las reputaciones.",
+      "PleaseEnterName": "Por favor, introduce un nombre.",
+      "ErrorChangingReputation": "Error al cambiar la reputación.",
+      "ErrorSettingReputation": "Error al establecer la reputación.",
+      "ErrorResettingFaction": "Error al reiniciar la facción."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Eliminar Facción",
+      "DeleteFactionContent": "¿Estás seguro de que quieres eliminar la facción '{name}'? Esto eliminará todos los datos de reputación de esta facción.",
+      "AddFactionTitle": "Añadir Nueva Facción",
+      "AddFactionName": "Nombre de Facción",
+      "AddFactionNamePlaceholder": "ej. Gremio de Mercaderes",
+      "AddFactionJournal": "Entrada de Diario (opcional)",
+      "AddFactionRollTable": "Tabla de Tiradas de Estado (opcional)",
+      "AddFactionStartNeutral": "Comenzar en neutral",
+      "Create": "Crear"
+    },
+
+    "RankLabels": {
+      "Hostile": "Hostil",
+      "Unfriendly": "Antipático",
+      "Wary": "Cauteloso",
+      "NeutralMinus": "Neutral-",
+      "Neutral": "Neutral",
+      "NeutralPlus": "Neutral+",
+      "Cordial": "Cordial",
+      "Friendly": "Amistoso",
+      "Allied": "Aliado"
+    },
+
+    "Chat": {
+      "ReputationChanged": "Reputación cambiada:",
+      "PlayerWithFaction": "{player} con {faction} ahora es",
+      "GroupWithFaction": "El Grupo con {faction} ahora es",
+      "Unknown": "Desconocido"
+    }
+  }
+}

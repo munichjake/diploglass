@@ -1,0 +1,129 @@
+{
+  "id": "diploglass",
+  "title": "DiploGlass",
+  "description": "Weave intricate diplomatic relationships in your campaigns. Track reputation, alliances, and faction standing with elegant tools designed for political intrigue and social dynamics.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "12.0.0",
+    "verified": "13.347",
+    "maximum": "13.999.999"
+  },
+  "authors": [
+    {
+      "name": "munichjake",
+      "email": "munichjake@dnd-session.de",
+      "url": "https://github.com/munichjake",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/faction-reputation.css"
+  ],
+  "languages": [
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json",
+      "flags": {}
+    },
+    {
+      "lang": "ja",
+      "name": "日本語",
+      "path": "lang/ja.json",
+      "flags": {}
+    },
+    {
+      "lang": "ko",
+      "name": "한국어",
+      "path": "lang/ko.json",
+      "flags": {}
+    },
+    {
+      "lang": "tr",
+      "name": "Türkçe",
+      "path": "lang/tr.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "hu",
+      "name": "Magyar",
+      "path": "lang/hu.json",
+      "flags": {}
+    },
+    {
+      "lang": "da",
+      "name": "Dansk",
+      "path": "lang/da.json",
+      "flags": {}
+    },
+    {
+      "lang": "sv",
+      "name": "Svenska",
+      "path": "lang/sv.json",
+      "flags": {}
+    },
+    {
+      "lang": "fi",
+      "name": "Suomi",
+      "path": "lang/fi.json",
+      "flags": {}
+    }
+  ],
+  "manifest": "https://raw.githubusercontent.com/munichjake/diploglass/main/module.json",
+  "download": "https://github.com/munichjake/diploglass/releases/download/v1.0.0/diploglass.zip",
+  "license": "GPL-3.0",
+  "readme": "https://github.com/munichjake/diploglass/blob/main/README.md",
+  "bugs": "https://github.com/munichjake/diploglass/issues",
+  "changelog": "https://github.com/munichjake/diploglass/blob/main/CHANGELOG.md",
+  "url": "https://github.com/munichjake/diploglass",
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "hbs",
+        "html",
+        "json",
+        "js"
+      ],
+      "paths": [
+        "scripts",
+        "styles",
+        "templates",
+        "lang"
+      ]
+    }
+  }
+}

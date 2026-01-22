@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Dodaj Frakcję",
+    "AddFirstFaction": "Dodaj swoją pierwszą frakcję",
+    "NoFactions": "Brak dostępnych frakcji",
+    "NoSearchResults": "Żadna frakcja nie pasuje do wyszukiwania",
+    "NoPlayers": "Brak dostępnych graczy",
+    "NoFactionsHint": "Kliknij 'Dodaj Frakcję', aby utworzyć nową frakcję.",
+    "Legend": "Poziomy Reputacji",
+    "OpenJournal": "Otwórz Dziennik",
+    "ConfigFaction": "Konfiguruj Frakcję",
+    "DeleteFaction": "Usuń Frakcję",
+    "FactionName": "Nazwa Frakcji",
+    "LinkedJournal": "Powiązany Dziennik",
+    "NoJournal": "Brak Dziennika",
+    "StartAtNeutral": "Nowi gracze zaczynają jako neutralni",
+    "StartAtNeutralHint": "Jeśli włączone, nowi gracze zaczynają z neutralną reputacją dla tej frakcji. W przeciwnym razie zaczynają jako wrodzy.",
+    "UsePerPlayerMode": "Śledź reputację per gracz",
+    "UsePerPlayerModeHint": "Jeśli włączone, każdy gracz ma własną reputację z tą frakcją. W przeciwnym razie cała grupa dzieli wspólną reputację.",
+    "Save": "Zapisz",
+    "Cancel": "Anuluj",
+    "Steps": "Kroki Reputacji",
+    "StepsHint": "Liczba poziomów reputacji (nieparzysta, 3-21). Przykłady: 5 kroków = -2 do +2, 7 kroków = -3 do +3, 11 kroków = -5 do +5.",
+    "RollTable": "Tabela Statusu",
+    "NoRollTable": "Brak Tabeli",
+    "RollTableHint": "Połącz Tabelę, aby wyświetlać dynamiczne opisy statusu dla wartości reputacji.",
+    "CreateRollTable": "Utwórz Tabelę z domyślnymi wartościami",
+    "FactionIcon": "Ikona Frakcji",
+    "FactionIconHint": "Wybierz obraz, który będzie wyświetlany jako ikona frakcji. Pozostaw puste, aby użyć domyślnej ikony flagi.",
+    "BrowseIcon": "Przeglądaj obrazy",
+    "ClearIcon": "Wyczyść ikonę",
+    "PerPlayerMode": "Per Gracz",
+    "PerPlayerHint": "Ta frakcja używa trybu per gracz. Przełącz na zakładkę Gracze, aby zmienić reputacje poszczególnych graczy.",
+    "GlobalMode": "Globalny",
+    "GroupReputation": "Reputacja Grupy",
+    "Factions": "Frakcje",
+    "SearchFactions": "Szukaj frakcji",
+    "SelectFaction": "Wybierz Frakcję",
+    "SelectFactionHint": "Wybierz frakcję z paska bocznego, aby wyświetlić i zarządzać jej reputacją.",
+    "CurrentValue": "Aktualna Wartość",
+    "Rank": "Ranga",
+    "Mode": "Tryb",
+    "PerPlayer": "Per Gracz",
+    "Global": "Globalny",
+    "SetDirectly": "Ustaw Bezpośrednio",
+    "DragOrPreset": "Przeciągnij lub użyj presetu",
+    "ResetFaction": "Resetuj Frakcję",
+    "ResetFactionConfirm": "Czy na pewno chcesz zresetować reputację tej frakcji do neutralnej?",
+    "ChangeLog": {
+      "Title": "Dziennik Zmian",
+      "By": "przez",
+      "AddComment": "Dodaj Komentarz",
+      "NoEntries": "Brak zapisanych zmian"
+    },
+    "RollTableResult": "Wynik Tabeli",
+    "CurrentRank": "Aktualna Ranga",
+    "CurrentLevel": "Aktualny",
+    "Tab": {
+      "Overview": "Przegląd",
+      "Players": "Gracze",
+      "Levels": "Poziomy"
+    },
+    "ControlsLabel": "Kontrolki",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Otwórz Reputację Frakcji"
+    },
+
+    "Button": {
+      "OpenWindow": "Otwórz Reputację Frakcji"
+    },
+
+    "Settings": {
+      "Title": "Ustawienia",
+      "StartAtNeutral": "Domyślnie zacznij jako neutralny",
+      "StartAtNeutralHint": "Jeśli włączone, nowi gracze domyślnie zaczynają z neutralną reputacją dla wszystkich frakcji.",
+
+      "UsePerPlayerReputation": "Użyj reputacji per gracz",
+      "UsePerPlayerReputationHint": "Jeśli włączone, każdy gracz ma własną reputację z każdą frakcją. W przeciwnym razie cała grupa dzieli wspólną reputację.",
+
+      "PostChatMessages": "Publikuj wiadomości na czacie",
+      "PostChatMessagesHint": "Jeśli włączone, wiadomość zostanie opublikowana na czacie, gdy reputacja się zmieni.",
+
+      "ChatMessageVisibility": "Widoczność wiadomości czatu",
+      "ChatMessageVisibilityHint": "Określa, kto może widzieć wiadomości o zmianach reputacji na czacie.",
+
+      "GMOnly": "Tylko MG",
+      "AllPlayers": "Wszyscy Gracze",
+      "PlayersOnly": "Tylko Gracze",
+
+      "ReputationLevels": "Poziomy Reputacji",
+      "ReputationLevelsHint": "Skonfiguruj dostępne poziomy reputacji, ich wartości, etykiety i kolory.",
+
+      "AdvancedSettings": "Zaawansowane Ustawienia",
+      "Configure": "Konfiguruj",
+      "AdvancedSettingsHint": "Zaawansowana konfiguracja systemu reputacji, wiadomości czatu i więcej.",
+
+      "GeneralSettings": "Ustawienia Ogólne",
+      "ChatSettings": "Ustawienia Czatu",
+
+      "LevelValue": "Wartość",
+      "LevelKey": "Klucz",
+      "LevelLabel": "Etykieta",
+      "LevelColor": "Kolor",
+      "Controls": "Kontrolki",
+
+      "AddLevel": "Dodaj Poziom",
+      "ResetToDefault": "Resetuj do Domyślnych",
+      "MoveUp": "Przesuń w Górę",
+      "MoveDown": "Przesuń w Dół",
+      "Delete": "Usuń",
+      "Preview": "Podgląd",
+
+      "ModeComparison": "Porównanie Trybów",
+      "Feature": "Funkcja",
+      "PerPlayerMode": "Tryb Per Gracz",
+      "GlobalMode": "Tryb Globalny",
+      "IndividualReputation": "Indywidualna Reputacja",
+      "SharedReputation": "Wspólna Reputacja",
+      "Complexity": "Złożoność",
+      "Higher": "Wyższa",
+      "Lower": "Niższa",
+
+      "MessagePreview": "Podgląd Wiadomości",
+      "SettingsSaved": "Ustawienia zostały pomyślnie zapisane.",
+
+      "PlayerAccess": "Dostęp Gracza",
+      "PlayerAccessHint": "Kontroluje, czy gracze mogą widzieć i korzystać z okna reputacji.",
+      "PlayerAccessNone": "Ukryty (tylko MG)",
+      "PlayerAccessView": "Tylko podgląd",
+      "PlayerAccessEdit": "Podgląd i edycja"
+    },
+
+    "Notifications": {
+      "FactionCreated": "Frakcja '{name}' została utworzona",
+      "FactionDeleted": "Frakcja '{name}' została usunięta",
+      "JournalCreated": "Wpis dziennika '{name}' został utworzony",
+      "RollTableCreated": "Tabela '{name}' została utworzona",
+      "ReputationChanged": "Reputacja {player} z {faction} zmieniła się na {level}",
+      "GlobalReputationChanged": "Reputacja grupy z {faction} zmieniła się na {level}",
+      "OnlyGMCanChange": "Tylko MG może zmieniać reputacje.",
+      "PleaseEnterName": "Proszę wprowadzić nazwę.",
+      "StepsMustBeOdd": "Liczba kroków musi być nieparzysta (np. 3, 5, 7, 9...).",
+      "StepsOutOfRange": "Liczba kroków musi być między 3 a 21.",
+      "ErrorChangingReputation": "Błąd podczas zmiany reputacji.",
+      "ErrorSettingReputation": "Błąd podczas ustawiania reputacji.",
+      "ErrorResettingFaction": "Błąd podczas resetowania frakcji."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Usuń Frakcję",
+      "DeleteFactionContent": "Czy na pewno chcesz usunąć frakcję '{name}'? To usunie wszystkie dane reputacji dla tej frakcji.",
+      "AddFactionTitle": "Dodaj Nową Frakcję",
+      "AddFactionName": "Nazwa Frakcji",
+      "AddFactionNamePlaceholder": "np. Gildia Kupców",
+      "AddFactionJournal": "Wpis Dziennika (opcjonalnie)",
+      "AddFactionRollTable": "Tabela Statusu (opcjonalnie)",
+      "AddFactionStartNeutral": "Zacznij jako neutralny",
+      "Create": "Utwórz",
+      "CreateJournal": "Utwórz nowy Wpis Dziennika",
+      "CreateRollTable": "Utwórz nową Tabelę",
+      "NewJournal": "Nowy Dziennik",
+      "NewRollTable": "Nowa Tabela"
+    },
+
+    "RankLabels": {
+      "Hostile": "Wrogi",
+      "Unfriendly": "Nieprzyjazny",
+      "Wary": "Ostrożny",
+      "NeutralMinus": "Neutralny-",
+      "Neutral": "Neutralny",
+      "NeutralPlus": "Neutralny+",
+      "Cordial": "Uprzejmy",
+      "Friendly": "Przyjazny",
+      "Allied": "Sprzymierzony"
+    },
+
+    "Chat": {
+      "ReputationChanged": "Reputacja zmieniona:",
+      "PlayerWithFaction": "{player} z {faction} jest teraz",
+      "GroupWithFaction": "Grupa z {faction} jest teraz",
+      "Unknown": "Nieznany"
+    }
+  }
+}

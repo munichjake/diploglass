@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "派閥を追加",
+    "AddFirstFaction": "最初の派閥を追加",
+    "NoFactions": "派閥がありません",
+    "NoSearchResults": "検索に一致する派閥がありません",
+    "NoPlayers": "プレイヤーがいません",
+    "NoFactionsHint": "「派閥を追加」をクリックして新しい派閥を作成してください。",
+    "Legend": "評判レベル",
+    "OpenJournal": "ジャーナルを開く",
+    "ConfigFaction": "派閥を設定",
+    "DeleteFaction": "派閥を削除",
+    "FactionName": "派閥名",
+    "LinkedJournal": "リンクされたジャーナル",
+    "NoJournal": "ジャーナルなし",
+    "StartAtNeutral": "新規プレイヤーは中立から開始",
+    "StartAtNeutralHint": "有効にすると、新規プレイヤーはこの派閥に対して中立の評判から開始します。無効の場合は敵対から開始します。",
+    "UsePerPlayerMode": "プレイヤーごとの評判を追跡",
+    "UsePerPlayerModeHint": "有効にすると、各プレイヤーはこの派閥に対して独自の評判を持ちます。無効の場合はグループ全体で共通の評判を共有します。",
+    "Save": "保存",
+    "Cancel": "キャンセル",
+    "Steps": "評判ステップ",
+    "StepsHint": "評判レベルの数（3〜21の奇数）。例：5ステップ = -2〜+2、7ステップ = -3〜+3、11ステップ = -5〜+5。",
+    "RollTable": "ステータスロールテーブル",
+    "NoRollTable": "ロールテーブルなし",
+    "RollTableHint": "評判値に応じた動的なステータス説明を表示するためにロールテーブルをリンクします。",
+    "CreateRollTable": "デフォルト値でロールテーブルを作成",
+    "FactionIcon": "派閥アイコン",
+    "FactionIconHint": "派閥アイコンとして表示する画像を選択します。空のままにするとデフォルトの旗アイコンが使用されます。",
+    "BrowseIcon": "画像を参照",
+    "ClearIcon": "アイコンをクリア",
+    "PerPlayerMode": "プレイヤーごと",
+    "PerPlayerHint": "この派閥はプレイヤーごとモードを使用しています。個々のプレイヤーの評判を変更するにはプレイヤータブに切り替えてください。",
+    "GlobalMode": "グローバル",
+    "GroupReputation": "グループ評判",
+    "Factions": "派閥",
+    "SearchFactions": "派閥を検索",
+    "SelectFaction": "派閥を選択",
+    "SelectFactionHint": "サイドバーから派閥を選択して評判を表示・管理します。",
+    "CurrentValue": "現在の値",
+    "Rank": "ランク",
+    "Mode": "モード",
+    "PerPlayer": "プレイヤーごと",
+    "Global": "グローバル",
+    "SetDirectly": "直接設定",
+    "DragOrPreset": "ドラッグまたはプリセットを使用",
+    "ResetFaction": "派閥をリセット",
+    "ResetFactionConfirm": "この派閥の評判を中立にリセットしてもよろしいですか？",
+    "ChangeLog": {
+      "Title": "変更ログ",
+      "By": "作成者",
+      "AddComment": "コメントを追加",
+      "NoEntries": "まだ変更が記録されていません"
+    },
+    "RollTableResult": "ロールテーブル結果",
+    "CurrentRank": "現在のランク",
+    "CurrentLevel": "現在",
+    "Tab": {
+      "Overview": "概要",
+      "Players": "プレイヤー",
+      "Levels": "レベル"
+    },
+    "ControlsLabel": "コントロール",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "派閥評判を開く"
+    },
+
+    "Button": {
+      "OpenWindow": "派閥評判を開く"
+    },
+
+    "Settings": {
+      "Title": "設定",
+      "StartAtNeutral": "デフォルトで中立から開始",
+      "StartAtNeutralHint": "有効にすると、新規プレイヤーはすべての派閥に対してデフォルトで中立の評判から開始します。",
+
+      "UsePerPlayerReputation": "プレイヤーごとの評判を使用",
+      "UsePerPlayerReputationHint": "有効にすると、各プレイヤーは各派閥に対して独自の評判を持ちます。無効の場合はグループ全体で共通の評判を共有します。",
+
+      "PostChatMessages": "チャットメッセージを投稿",
+      "PostChatMessagesHint": "有効にすると、評判が変更されたときにチャットメッセージが投稿されます。",
+
+      "ChatMessageVisibility": "チャットメッセージの可視性",
+      "ChatMessageVisibilityHint": "評判変更メッセージをチャットで誰が見られるかを決定します。",
+
+      "GMOnly": "GMのみ",
+      "AllPlayers": "全プレイヤー",
+      "PlayersOnly": "プレイヤーのみ",
+
+      "ReputationLevels": "評判レベル",
+      "ReputationLevelsHint": "利用可能な評判レベル、その値、ラベル、色を設定します。",
+
+      "AdvancedSettings": "詳細設定",
+      "Configure": "設定",
+      "AdvancedSettingsHint": "評判システム、チャットメッセージなどの詳細設定。",
+
+      "GeneralSettings": "一般設定",
+      "ChatSettings": "チャット設定",
+
+      "LevelValue": "値",
+      "LevelKey": "キー",
+      "LevelLabel": "ラベル",
+      "LevelColor": "色",
+      "Controls": "コントロール",
+
+      "AddLevel": "レベルを追加",
+      "ResetToDefault": "デフォルトにリセット",
+      "MoveUp": "上に移動",
+      "MoveDown": "下に移動",
+      "Delete": "削除",
+      "Preview": "プレビュー",
+
+      "ModeComparison": "モード比較",
+      "Feature": "機能",
+      "PerPlayerMode": "プレイヤーごとモード",
+      "GlobalMode": "グローバルモード",
+      "IndividualReputation": "個別評判",
+      "SharedReputation": "共有評判",
+      "Complexity": "複雑さ",
+      "Higher": "高い",
+      "Lower": "低い",
+
+      "MessagePreview": "メッセージプレビュー",
+      "SettingsSaved": "設定が正常に保存されました。",
+
+      "PlayerAccess": "プレイヤーアクセス",
+      "PlayerAccessHint": "プレイヤーが評判ウィンドウを見たり操作したりできるかを制御します。",
+      "PlayerAccessNone": "非表示（GMのみ）",
+      "PlayerAccessView": "閲覧のみ",
+      "PlayerAccessEdit": "閲覧と編集"
+    },
+
+    "Notifications": {
+      "FactionCreated": "派閥「{name}」が作成されました",
+      "FactionDeleted": "派閥「{name}」が削除されました",
+      "JournalCreated": "ジャーナル「{name}」が作成されました",
+      "RollTableCreated": "ロールテーブル「{name}」が作成されました",
+      "ReputationChanged": "{player}の{faction}に対する評判が{level}に変更されました",
+      "GlobalReputationChanged": "グループの{faction}に対する評判が{level}に変更されました",
+      "OnlyGMCanChange": "GMのみが評判を変更できます。",
+      "PleaseEnterName": "名前を入力してください。",
+      "StepsMustBeOdd": "ステップ数は奇数である必要があります（例：3、5、7、9...）。",
+      "StepsOutOfRange": "ステップ数は3から21の間である必要があります。",
+      "ErrorChangingReputation": "評判の変更中にエラーが発生しました。",
+      "ErrorSettingReputation": "評判の設定中にエラーが発生しました。",
+      "ErrorResettingFaction": "派閥のリセット中にエラーが発生しました。"
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "派閥を削除",
+      "DeleteFactionContent": "派閥「{name}」を削除してもよろしいですか？この派閥のすべての評判データが削除されます。",
+      "AddFactionTitle": "新しい派閥を追加",
+      "AddFactionName": "派閥名",
+      "AddFactionNamePlaceholder": "例：商人ギルド",
+      "AddFactionJournal": "ジャーナル（オプション）",
+      "AddFactionRollTable": "ステータスロールテーブル（オプション）",
+      "AddFactionStartNeutral": "中立から開始",
+      "Create": "作成",
+      "CreateJournal": "新しいジャーナルを作成",
+      "CreateRollTable": "新しいロールテーブルを作成",
+      "NewJournal": "新規ジャーナル",
+      "NewRollTable": "新規ロールテーブル"
+    },
+
+    "RankLabels": {
+      "Hostile": "敵対",
+      "Unfriendly": "非友好",
+      "Wary": "警戒",
+      "NeutralMinus": "中立-",
+      "Neutral": "中立",
+      "NeutralPlus": "中立+",
+      "Cordial": "礼儀正しい",
+      "Friendly": "友好",
+      "Allied": "同盟"
+    },
+
+    "Chat": {
+      "ReputationChanged": "評判が変更されました：",
+      "PlayerWithFaction": "{player}の{faction}に対する評判は",
+      "GroupWithFaction": "グループの{faction}に対する評判は",
+      "Unknown": "不明"
+    }
+  }
+}

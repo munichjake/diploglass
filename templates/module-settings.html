@@ -1,0 +1,76 @@
+<form class="fr-module-settings">
+    <section class="fr-settings-section">
+        <h3 class="fr-section-header">
+            <i class="fas fa-users"></i>
+            {{localize "DIPLOGLASS.Settings.GeneralSettings"}}
+        </h3>
+
+        <div class="fr-form-group">
+            <label class="fr-checkbox-label">
+                <input type="checkbox" name="usePerPlayerReputation" {{#if usePerPlayerReputation}}checked{{/if}}>
+                {{localize "DIPLOGLASS.Settings.UsePerPlayerReputation"}}
+            </label>
+            <p class="fr-form-hint">{{localize "DIPLOGLASS.Settings.UsePerPlayerReputationHint"}}</p>
+        </div>
+
+        <div class="fr-form-group">
+            <label class="fr-checkbox-label">
+                <input type="checkbox" name="startAtNeutral" {{#if startAtNeutral}}checked{{/if}}>
+                {{localize "DIPLOGLASS.Settings.StartAtNeutral"}}
+            </label>
+            <p class="fr-form-hint">{{localize "DIPLOGLASS.Settings.StartAtNeutralHint"}}</p>
+        </div>
+    </section>
+
+    <section class="fr-settings-section">
+        <h3 class="fr-section-header">
+            <i class="fas fa-comments"></i>
+            {{localize "DIPLOGLASS.Settings.ChatSettings"}}
+        </h3>
+
+        <div class="fr-form-group">
+            <label class="fr-checkbox-label">
+                <input type="checkbox" name="postChatMessages" {{#if postChatMessages}}checked{{/if}}>
+                {{localize "DIPLOGLASS.Settings.PostChatMessages"}}
+            </label>
+            <p class="fr-form-hint">{{localize "DIPLOGLASS.Settings.PostChatMessagesHint"}}</p>
+        </div>
+
+        <div class="fr-form-group">
+            <label>{{localize "DIPLOGLASS.Settings.ChatMessageVisibility"}}</label>
+            <select name="chatMessageVisibility">
+                {{#each visibilityOptions}}
+                <option value="{{this.value}}" {{#if this.selected}}selected{{/if}}>
+                    {{localize this.label}}
+                </option>
+                {{/each}}
+            </select>
+            <p class="fr-form-hint">{{localize "DIPLOGLASS.Settings.ChatMessageVisibilityHint"}}</p>
+        </div>
+    </section>
+
+    <section class="fr-settings-section">
+        <h3 class="fr-section-header">
+            <i class="fas fa-layer-group"></i>
+            {{localize "DIPLOGLASS.Settings.ReputationLevels"}}
+        </h3>
+        <p class="fr-form-hint">{{localize "DIPLOGLASS.Settings.ReputationLevelsHint"}}</p>
+
+        <div class="fr-levels-preview">
+            {{#each levels}}
+            <div class="fr-level-chip" style="background-color: {{this.color}}; color: white;">
+                {{this.label}} ({{this.value}})
+            </div>
+            {{/each}}
+        </div>
+    </section>
+
+    <div class="fr-form-buttons">
+        <button type="submit" class="fr-save-btn">
+            <i class="fas fa-save"></i> {{localize "DIPLOGLASS.Save"}}
+        </button>
+        <button type="button" class="fr-cancel-btn" data-action="close">
+            <i class="fas fa-times"></i> {{localize "DIPLOGLASS.Cancel"}}
+        </button>
+    </div>
+</form>

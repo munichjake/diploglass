@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Lägg till Fraktion",
+    "AddFirstFaction": "Lägg till din första fraktion",
+    "NoFactions": "Inga fraktioner tillgängliga",
+    "NoSearchResults": "Inga fraktioner matchar din sökning",
+    "NoPlayers": "Inga spelare tillgängliga",
+    "NoFactionsHint": "Klicka på 'Lägg till Fraktion' för att skapa en ny fraktion.",
+    "Legend": "Ryktesnivåer",
+    "OpenJournal": "Öppna Journal",
+    "ConfigFaction": "Konfigurera Fraktion",
+    "DeleteFaction": "Radera Fraktion",
+    "FactionName": "Fraktionsnamn",
+    "LinkedJournal": "Länkad Journal",
+    "NoJournal": "Ingen Journal",
+    "StartAtNeutral": "Nya spelare börjar neutrala",
+    "StartAtNeutralHint": "Om aktiverat börjar nya spelare med neutralt rykte hos denna fraktion. Annars börjar de som fientliga.",
+    "UsePerPlayerMode": "Spåra rykte per spelare",
+    "UsePerPlayerModeHint": "Om aktiverat har varje spelare sitt eget rykte med denna fraktion. Annars delar hela gruppen ett gemensamt rykte.",
+    "Save": "Spara",
+    "Cancel": "Avbryt",
+    "Steps": "Ryktesteg",
+    "StepsHint": "Antal ryktesnivåer (udda tal, 3-21). Exempel: 5 steg = -2 till +2, 7 steg = -3 till +3, 11 steg = -5 till +5.",
+    "RollTable": "Status Slumptabell",
+    "NoRollTable": "Ingen Slumptabell",
+    "RollTableHint": "Länka en Slumptabell för att visa dynamiska statusbeskrivningar för ryktevärden.",
+    "CreateRollTable": "Skapa Slumptabell med standardvärden",
+    "FactionIcon": "Fraktionsikon",
+    "FactionIconHint": "Välj en bild som ska visas som fraktionsikon. Lämna tomt för att använda standardflaggikon.",
+    "BrowseIcon": "Bläddra efter bild",
+    "ClearIcon": "Rensa ikon",
+    "PerPlayerMode": "Per Spelare",
+    "PerPlayerHint": "Denna fraktion använder per-spelare läge. Byt till Spelare-fliken för att ändra individuella spelares rykte.",
+    "GlobalMode": "Global",
+    "GroupReputation": "Grupprykte",
+    "Factions": "Fraktioner",
+    "SearchFactions": "Sök fraktioner",
+    "SelectFaction": "Välj en Fraktion",
+    "SelectFactionHint": "Välj en fraktion från sidofältet för att visa och hantera dess rykte.",
+    "CurrentValue": "Nuvarande Värde",
+    "Rank": "Rang",
+    "Mode": "Läge",
+    "PerPlayer": "Per Spelare",
+    "Global": "Global",
+    "SetDirectly": "Ställ in Direkt",
+    "DragOrPreset": "Dra eller använd förinställning",
+    "ResetFaction": "Återställ Fraktion",
+    "ResetFactionConfirm": "Är du säker på att du vill återställa denna fraktions rykte till neutralt?",
+    "ChangeLog": {
+      "Title": "Ändringslogg",
+      "By": "av",
+      "AddComment": "Lägg till Kommentar",
+      "NoEntries": "Inga ändringar registrerade än"
+    },
+    "RollTableResult": "Slumptabell Resultat",
+    "CurrentRank": "Nuvarande Rang",
+    "CurrentLevel": "Nuvarande",
+    "Tab": {
+      "Overview": "Översikt",
+      "Players": "Spelare",
+      "Levels": "Nivåer"
+    },
+    "ControlsLabel": "Kontroller",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Öppna Fraktionsrykte"
+    },
+
+    "Button": {
+      "OpenWindow": "Öppna Fraktionsrykte"
+    },
+
+    "Settings": {
+      "Title": "Inställningar",
+      "StartAtNeutral": "Börja som neutral som standard",
+      "StartAtNeutralHint": "Om aktiverat börjar nya spelare som standard med neutralt rykte hos alla fraktioner.",
+
+      "UsePerPlayerReputation": "Använd rykte per spelare",
+      "UsePerPlayerReputationHint": "Om aktiverat har varje spelare sitt eget rykte med varje fraktion. Annars delar hela gruppen ett gemensamt rykte.",
+
+      "PostChatMessages": "Skicka chattmeddelanden",
+      "PostChatMessagesHint": "Om aktiverat skickas ett chattmeddelande när ryktet ändras.",
+
+      "ChatMessageVisibility": "Chattmeddelande synlighet",
+      "ChatMessageVisibilityHint": "Bestämmer vem som kan se ryktesändringsmeddelanden i chatten.",
+
+      "GMOnly": "Endast GM",
+      "AllPlayers": "Alla Spelare",
+      "PlayersOnly": "Endast Spelare",
+
+      "ReputationLevels": "Ryktesnivåer",
+      "ReputationLevelsHint": "Konfigurera tillgängliga ryktesnivåer, deras värden, etiketter och färger.",
+
+      "AdvancedSettings": "Avancerade Inställningar",
+      "Configure": "Konfigurera",
+      "AdvancedSettingsHint": "Avancerad konfiguration för ryktesystem, chattmeddelanden och mer.",
+
+      "GeneralSettings": "Allmänna Inställningar",
+      "ChatSettings": "Chattinställningar",
+
+      "LevelValue": "Värde",
+      "LevelKey": "Nyckel",
+      "LevelLabel": "Etikett",
+      "LevelColor": "Färg",
+      "Controls": "Kontroller",
+
+      "AddLevel": "Lägg till Nivå",
+      "ResetToDefault": "Återställ till Standard",
+      "MoveUp": "Flytta Upp",
+      "MoveDown": "Flytta Ner",
+      "Delete": "Radera",
+      "Preview": "Förhandsgranskning",
+
+      "ModeComparison": "Lägesjämförelse",
+      "Feature": "Funktion",
+      "PerPlayerMode": "Per-Spelare Läge",
+      "GlobalMode": "Globalt Läge",
+      "IndividualReputation": "Individuellt Rykte",
+      "SharedReputation": "Delat Rykte",
+      "Complexity": "Komplexitet",
+      "Higher": "Högre",
+      "Lower": "Lägre",
+
+      "MessagePreview": "Meddelandeförhandsgranskning",
+      "SettingsSaved": "Inställningar sparades.",
+
+      "PlayerAccess": "Spelaråtkomst",
+      "PlayerAccessHint": "Styr om spelare kan se och interagera med ryktesfönstret.",
+      "PlayerAccessNone": "Dold (endast GM)",
+      "PlayerAccessView": "Endast visning",
+      "PlayerAccessEdit": "Visning och redigering"
+    },
+
+    "Notifications": {
+      "FactionCreated": "Fraktion '{name}' har skapats",
+      "FactionDeleted": "Fraktion '{name}' har raderats",
+      "JournalCreated": "Journalpost '{name}' har skapats",
+      "RollTableCreated": "Slumptabell '{name}' har skapats",
+      "ReputationChanged": "{player}s rykte med {faction} ändrades till {level}",
+      "GlobalReputationChanged": "Gruppens rykte med {faction} ändrades till {level}",
+      "OnlyGMCanChange": "Endast GM kan ändra rykte.",
+      "PleaseEnterName": "Vänligen ange ett namn.",
+      "StepsMustBeOdd": "Antalet steg måste vara udda (t.ex. 3, 5, 7, 9...).",
+      "StepsOutOfRange": "Antalet steg måste vara mellan 3 och 21.",
+      "ErrorChangingReputation": "Fel vid ändring av rykte.",
+      "ErrorSettingReputation": "Fel vid inställning av rykte.",
+      "ErrorResettingFaction": "Fel vid återställning av fraktion."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Radera Fraktion",
+      "DeleteFactionContent": "Är du säker på att du vill radera fraktionen '{name}'? Detta tar bort all ryktesdata för denna fraktion.",
+      "AddFactionTitle": "Lägg till Ny Fraktion",
+      "AddFactionName": "Fraktionsnamn",
+      "AddFactionNamePlaceholder": "t.ex. Handelsgille",
+      "AddFactionJournal": "Journalpost (valfritt)",
+      "AddFactionRollTable": "Status Slumptabell (valfritt)",
+      "AddFactionStartNeutral": "Börja som neutral",
+      "Create": "Skapa",
+      "CreateJournal": "Skapa ny Journalpost",
+      "CreateRollTable": "Skapa ny Slumptabell",
+      "NewJournal": "Ny Journal",
+      "NewRollTable": "Ny Slumptabell"
+    },
+
+    "RankLabels": {
+      "Hostile": "Fientlig",
+      "Unfriendly": "Ovänlig",
+      "Wary": "Försiktig",
+      "NeutralMinus": "Neutral-",
+      "Neutral": "Neutral",
+      "NeutralPlus": "Neutral+",
+      "Cordial": "Artig",
+      "Friendly": "Vänlig",
+      "Allied": "Allierad"
+    },
+
+    "Chat": {
+      "ReputationChanged": "Rykte ändrat:",
+      "PlayerWithFaction": "{player} med {faction} är nu",
+      "GroupWithFaction": "Gruppen med {faction} är nu",
+      "Unknown": "Okänd"
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "DIPLOGLASS": {
+    "WindowTitle": "DiploGlass",
+    "AddFaction": "Hizip Ekle",
+    "AddFirstFaction": "İlk hizibinizi ekleyin",
+    "NoFactions": "Hizip mevcut değil",
+    "NoSearchResults": "Aramayla eşleşen hizip yok",
+    "NoPlayers": "Oyuncu mevcut değil",
+    "NoFactionsHint": "Yeni bir hizip oluşturmak için 'Hizip Ekle'ye tıklayın.",
+    "Legend": "İtibar Seviyeleri",
+    "OpenJournal": "Günlüğü Aç",
+    "ConfigFaction": "Hizbi Yapılandır",
+    "DeleteFaction": "Hizbi Sil",
+    "FactionName": "Hizip Adı",
+    "LinkedJournal": "Bağlı Günlük",
+    "NoJournal": "Günlük Yok",
+    "StartAtNeutral": "Yeni oyuncular tarafsız başlar",
+    "StartAtNeutralHint": "Etkinleştirilirse, yeni oyuncular bu hizip için tarafsız itibarla başlar. Aksi takdirde düşman olarak başlarlar.",
+    "UsePerPlayerMode": "Oyuncu başına itibar takibi",
+    "UsePerPlayerModeHint": "Etkinleştirilirse, her oyuncunun bu hizip ile kendi itibarı olur. Aksi takdirde tüm grup ortak bir itibarı paylaşır.",
+    "Save": "Kaydet",
+    "Cancel": "İptal",
+    "Steps": "İtibar Adımları",
+    "StepsHint": "İtibar seviyesi sayısı (3-21 arası tek sayı). Örnekler: 5 adım = -2 ile +2, 7 adım = -3 ile +3, 11 adım = -5 ile +5.",
+    "RollTable": "Durum Zar Tablosu",
+    "NoRollTable": "Zar Tablosu Yok",
+    "RollTableHint": "İtibar değerleri için dinamik durum açıklamaları görüntülemek üzere bir Zar Tablosu bağlayın.",
+    "CreateRollTable": "Varsayılan değerlerle Zar Tablosu oluştur",
+    "FactionIcon": "Hizip Simgesi",
+    "FactionIconHint": "Hizip simgesi olarak görüntülenecek bir resim seçin. Varsayılan bayrak simgesini kullanmak için boş bırakın.",
+    "BrowseIcon": "Resim ara",
+    "ClearIcon": "Simgeyi temizle",
+    "PerPlayerMode": "Oyuncu Başına",
+    "PerPlayerHint": "Bu hizip oyuncu başına modu kullanıyor. Bireysel oyuncu itibarlarını değiştirmek için Oyuncular sekmesine geçin.",
+    "GlobalMode": "Genel",
+    "GroupReputation": "Grup İtibarı",
+    "Factions": "Hizipler",
+    "SearchFactions": "Hizip ara",
+    "SelectFaction": "Hizip Seç",
+    "SelectFactionHint": "İtibarı görüntülemek ve yönetmek için kenar çubuğundan bir hizip seçin.",
+    "CurrentValue": "Mevcut Değer",
+    "Rank": "Rütbe",
+    "Mode": "Mod",
+    "PerPlayer": "Oyuncu Başına",
+    "Global": "Genel",
+    "SetDirectly": "Doğrudan Ayarla",
+    "DragOrPreset": "Sürükle veya hazır ayar kullan",
+    "ResetFaction": "Hizbi Sıfırla",
+    "ResetFactionConfirm": "Bu hizbin itibarını tarafsıza sıfırlamak istediğinizden emin misiniz?",
+    "ChangeLog": {
+      "Title": "Değişiklik Günlüğü",
+      "By": "tarafından",
+      "AddComment": "Yorum Ekle",
+      "NoEntries": "Henüz değişiklik kaydedilmedi"
+    },
+    "RollTableResult": "Zar Tablosu Sonucu",
+    "CurrentRank": "Mevcut Rütbe",
+    "CurrentLevel": "Mevcut",
+    "Tab": {
+      "Overview": "Genel Bakış",
+      "Players": "Oyuncular",
+      "Levels": "Seviyeler"
+    },
+    "ControlsLabel": "Kontroller",
+    "Controls": {
+      "GroupTitle": "Diploglass",
+      "OpenWindow": "Hizip İtibarını Aç"
+    },
+
+    "Button": {
+      "OpenWindow": "Hizip İtibarını Aç"
+    },
+
+    "Settings": {
+      "Title": "Ayarlar",
+      "StartAtNeutral": "Varsayılan olarak tarafsız başla",
+      "StartAtNeutralHint": "Etkinleştirilirse, yeni oyuncular varsayılan olarak tüm hizipler için tarafsız itibarla başlar.",
+
+      "UsePerPlayerReputation": "Oyuncu başına itibar kullan",
+      "UsePerPlayerReputationHint": "Etkinleştirilirse, her oyuncunun her hizip ile kendi itibarı olur. Aksi takdirde tüm grup ortak bir itibarı paylaşır.",
+
+      "PostChatMessages": "Sohbet mesajları gönder",
+      "PostChatMessagesHint": "Etkinleştirilirse, itibar değiştiğinde sohbette bir mesaj gönderilir.",
+
+      "ChatMessageVisibility": "Sohbet mesajı görünürlüğü",
+      "ChatMessageVisibilityHint": "Sohbette itibar değişiklik mesajlarını kimin görebileceğini belirler.",
+
+      "GMOnly": "Sadece GM",
+      "AllPlayers": "Tüm Oyuncular",
+      "PlayersOnly": "Sadece Oyuncular",
+
+      "ReputationLevels": "İtibar Seviyeleri",
+      "ReputationLevelsHint": "Mevcut itibar seviyelerini, değerlerini, etiketlerini ve renklerini yapılandırın.",
+
+      "AdvancedSettings": "Gelişmiş Ayarlar",
+      "Configure": "Yapılandır",
+      "AdvancedSettingsHint": "İtibar sistemi, sohbet mesajları ve daha fazlası için gelişmiş yapılandırma.",
+
+      "GeneralSettings": "Genel Ayarlar",
+      "ChatSettings": "Sohbet Ayarları",
+
+      "LevelValue": "Değer",
+      "LevelKey": "Anahtar",
+      "LevelLabel": "Etiket",
+      "LevelColor": "Renk",
+      "Controls": "Kontroller",
+
+      "AddLevel": "Seviye Ekle",
+      "ResetToDefault": "Varsayılana Sıfırla",
+      "MoveUp": "Yukarı Taşı",
+      "MoveDown": "Aşağı Taşı",
+      "Delete": "Sil",
+      "Preview": "Önizleme",
+
+      "ModeComparison": "Mod Karşılaştırması",
+      "Feature": "Özellik",
+      "PerPlayerMode": "Oyuncu Başına Mod",
+      "GlobalMode": "Genel Mod",
+      "IndividualReputation": "Bireysel İtibar",
+      "SharedReputation": "Paylaşılan İtibar",
+      "Complexity": "Karmaşıklık",
+      "Higher": "Yüksek",
+      "Lower": "Düşük",
+
+      "MessagePreview": "Mesaj Önizleme",
+      "SettingsSaved": "Ayarlar başarıyla kaydedildi.",
+
+      "PlayerAccess": "Oyuncu Erişimi",
+      "PlayerAccessHint": "Oyuncuların itibar penceresini görüp göremeyeceğini ve etkileşimde bulunup bulunamayacağını kontrol eder.",
+      "PlayerAccessNone": "Gizli (Sadece GM)",
+      "PlayerAccessView": "Sadece görüntüleme",
+      "PlayerAccessEdit": "Görüntüleme ve düzenleme"
+    },
+
+    "Notifications": {
+      "FactionCreated": "'{name}' hizbi oluşturuldu",
+      "FactionDeleted": "'{name}' hizbi silindi",
+      "JournalCreated": "'{name}' günlük girişi oluşturuldu",
+      "RollTableCreated": "'{name}' Zar Tablosu oluşturuldu",
+      "ReputationChanged": "{player}'ın {faction} ile itibarı {level} olarak değişti",
+      "GlobalReputationChanged": "Grubun {faction} ile itibarı {level} olarak değişti",
+      "OnlyGMCanChange": "Sadece GM itibarları değiştirebilir.",
+      "PleaseEnterName": "Lütfen bir isim girin.",
+      "StepsMustBeOdd": "Adım sayısı tek olmalıdır (örn. 3, 5, 7, 9...).",
+      "StepsOutOfRange": "Adım sayısı 3 ile 21 arasında olmalıdır.",
+      "ErrorChangingReputation": "İtibar değiştirme hatası.",
+      "ErrorSettingReputation": "İtibar ayarlama hatası.",
+      "ErrorResettingFaction": "Hizip sıfırlama hatası."
+    },
+
+    "Dialogs": {
+      "DeleteFactionTitle": "Hizbi Sil",
+      "DeleteFactionContent": "'{name}' hizbini silmek istediğinizden emin misiniz? Bu hizip için tüm itibar verileri silinecektir.",
+      "AddFactionTitle": "Yeni Hizip Ekle",
+      "AddFactionName": "Hizip Adı",
+      "AddFactionNamePlaceholder": "örn. Tüccar Loncası",
+      "AddFactionJournal": "Günlük Girişi (isteğe bağlı)",
+      "AddFactionRollTable": "Durum Zar Tablosu (isteğe bağlı)",
+      "AddFactionStartNeutral": "Tarafsız başla",
+      "Create": "Oluştur",
+      "CreateJournal": "Yeni Günlük Girişi oluştur",
+      "CreateRollTable": "Yeni Zar Tablosu oluştur",
+      "NewJournal": "Yeni Günlük",
+      "NewRollTable": "Yeni Zar Tablosu"
+    },
+
+    "RankLabels": {
+      "Hostile": "Düşman",
+      "Unfriendly": "Düşmanca",
+      "Wary": "Temkinli",
+      "NeutralMinus": "Tarafsız-",
+      "Neutral": "Tarafsız",
+      "NeutralPlus": "Tarafsız+",
+      "Cordial": "Nazik",
+      "Friendly": "Dostça",
+      "Allied": "Müttefik"
+    },
+
+    "Chat": {
+      "ReputationChanged": "İtibar değişti:",
+      "PlayerWithFaction": "{player} ile {faction} artık",
+      "GroupWithFaction": "Grup ile {faction} artık",
+      "Unknown": "Bilinmiyor"
+    }
+  }
+}
