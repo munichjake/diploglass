@@ -2,6 +2,11 @@
 
 All notable changes to DiploGlass will be documented in this file.
 
+## [1.1.1] - 2026-04-09
+
+### Fixed
+- **Infotainment-Popup** - HTML-Inhalte in Savras-Nachrichten wurden als Rohtext angezeigt statt gerendert
+
 ## [1.1.0] - 2026-04-08
 
 ### Added
