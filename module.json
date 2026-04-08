@@ -2,7 +2,7 @@
   "id": "diploglass",
   "title": "DiploGlass",
   "description": "Weave intricate diplomatic relationships in your campaigns. Track reputation, alliances, and faction standing with elegant tools designed for political intrigue and social dynamics.",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "compatibility": {
     "minimum": "12",
     "verified": "14",
@@ -103,7 +103,7 @@
     }
   ],
   "manifest": "https://github.com/munichjake/diploglass/releases/latest/download/module.json",
-  "download": "https://github.com/munichjake/diploglass/releases/download/v1.0.0/diploglass.zip",
+  "download": "https://github.com/munichjake/diploglass/releases/download/v1.1.1/diploglass.zip",
   "license": "GPL-3.0",
   "readme": "https://github.com/munichjake/diploglass/blob/main/README.md",
   "bugs": "https://github.com/munichjake/diploglass/issues",
