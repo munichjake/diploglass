@@ -10,7 +10,9 @@ Hooks.once('init', () => {
     registerHandlebarsHelpers();
 });
 
-Hooks.on('renderPlayerList', (app, html) => {
+// Inject reputation button into player list
+// V14 renamed PlayerList to Players, changing the hook from renderPlayerList to renderPlayers
+function _onRenderPlayerList(app, html) {
     const playerAccess = game.settings.get('diploglass', 'playerAccess');
 
     // Hide button for non-GMs if access is 'none'
@@ -28,15 +30,14 @@ Hooks.on('renderPlayerList', (app, html) => {
         new FactionReputationWindow().render(true);
     });
 
-    const playerList = html.querySelector('.player-list');
-    if (playerList) {
-        playerList.before(button);
-    } else {
-        const root = html instanceof HTMLElement ? html : html[0];
-        const list = root.querySelector('.player-list') || root;
-        list.prepend(button);
-    }
-});
+    // html is HTMLElement in V13+/V14 (ApplicationV2), jQuery in V12
+    const root = html instanceof HTMLElement ? html : html[0];
+    const playerList = root.querySelector('.player-list') || root;
+    playerList.prepend(button);
+}
+
+Hooks.on('renderPlayerList', _onRenderPlayerList); // V12/V13
+Hooks.on('renderPlayers', _onRenderPlayerList);     // V14+
 
 Hooks.on('getSceneControlButtons', (controls) => {
     const playerAccess = game.settings.get('diploglass', 'playerAccess');

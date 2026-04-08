@@ -4,6 +4,7 @@
 # Development / Planning files
 archive/
 .designs/
+_dev/
 
 # OS files
 .DS_Store

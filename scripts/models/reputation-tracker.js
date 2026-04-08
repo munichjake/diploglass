@@ -189,18 +189,19 @@ export class FactionReputationTracker {
         delete factions[factionId];
         await this.setFactions(factions);
 
-        // Remove Reputation Data
-        if (this.usePerPlayerReputation()) {
-            const reputations = this.getPlayerReputations();
-            for (const userId in reputations) {
-                delete reputations[userId][factionId];
+        // Always clean both data sources to prevent orphaned data
+        // (a faction may have switched modes during its lifetime)
+        const playerReputations = this.getPlayerReputations();
+        for (const userId in playerReputations) {
+            if (playerReputations[userId]) {
+                delete playerReputations[userId][factionId];
             }
-            await this.setPlayerReputations(reputations);
-        } else {
-            const reputations = this.getGlobalReputations();
-            delete reputations[factionId];
-            await this.setGlobalReputations(reputations);
         }
+        await this.setPlayerReputations(playerReputations);
+
+        const globalReputations = this.getGlobalReputations();
+        delete globalReputations[factionId];
+        await this.setGlobalReputations(globalReputations);
     }
 
     static async changeReputation(userId, factionId, change) {

@@ -2,6 +2,13 @@
 
 All notable changes to DiploGlass will be documented in this file.
 
+## [1.1.0] - 2026-04-08
+
+### Fixed
+- **Fraktionen löschen** ([#1](https://github.com/munichjake/diploglass/issues/1)) - Delete-Button ist jetzt deutlich sichtbar mit erhöhter Opazität und Textlabel
+- **Delete-Bestätigungsdialog** - Sicherheitsabfrage vor dem Löschen war bereits implementiert (verifiziert und bestätigt)
+- **Logik-Bug in deleteFaction()** - Beim Löschen einer Fraktion werden jetzt immer beide Datenquellen (Per-Player und Global) bereinigt, um Datenleichen zu vermeiden
+
 ## [1.0.0] - 2026-01-18
 
 ### Added
