@@ -4,9 +4,9 @@
   "description": "Weave intricate diplomatic relationships in your campaigns. Track reputation, alliances, and faction standing with elegant tools designed for political intrigue and social dynamics.",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "12.0.0",
-    "verified": "14.359",
-    "maximum": "14.999.999"
+    "minimum": "12",
+    "verified": "14",
+    "maximum": "14"
   },
   "authors": [
     {
