@@ -35,6 +35,7 @@
     "GlobalMode": "Global",
     "GroupReputation": "Grupprykte",
     "Factions": "Fraktioner",
+    "ExportFactions": "Exportera fraktioner",
     "SearchFactions": "Sök fraktioner",
     "SelectFaction": "Välj en Fraktion",
     "SelectFactionHint": "Välj en fraktion från sidofältet för att visa och hantera dess rykte.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "Antalet steg måste vara mellan 3 och 21.",
       "ErrorChangingReputation": "Fel vid ändring av rykte.",
       "ErrorSettingReputation": "Fel vid inställning av rykte.",
-      "ErrorResettingFaction": "Fel vid återställning av fraktion."
+      "ErrorResettingFaction": "Fel vid återställning av fraktion.",
+      "FactionsExported": "Fraktioner exporterades."
     },
 
     "Dialogs": {

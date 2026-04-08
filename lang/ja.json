@@ -35,6 +35,7 @@
     "GlobalMode": "グローバル",
     "GroupReputation": "グループ評判",
     "Factions": "派閥",
+    "ExportFactions": "派閥をエクスポート",
     "SearchFactions": "派閥を検索",
     "SelectFaction": "派閥を選択",
     "SelectFactionHint": "サイドバーから派閥を選択して評判を表示・管理します。",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "ステップ数は3から21の間である必要があります。",
       "ErrorChangingReputation": "評判の変更中にエラーが発生しました。",
       "ErrorSettingReputation": "評判の設定中にエラーが発生しました。",
-      "ErrorResettingFaction": "派閥のリセット中にエラーが発生しました。"
+      "ErrorResettingFaction": "派閥のリセット中にエラーが発生しました。",
+      "FactionsExported": "派閥が正常にエクスポートされました。"
     },
 
     "Dialogs": {

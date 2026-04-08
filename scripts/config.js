@@ -19,12 +19,9 @@ export function getReputationLevels() {
     ];
 }
 
-// Legacy export for backwards compatibility - returns empty array, use getReputationLevels() instead
-export const REPUTATION_LEVELS = [];
-
 export function registerSettings() {
     game.settings.register(MODULE_ID, 'factions', {
-        name: 'Fraktionen',
+        name: 'Factions',
         scope: 'world',
         config: false,
         type: Object,
@@ -32,7 +29,7 @@ export function registerSettings() {
     });
 
     game.settings.register(MODULE_ID, 'playerReputations', {
-        name: 'Spieler Reputationen',
+        name: 'Player Reputations',
         scope: 'world',
         config: false,
         type: Object,
@@ -40,7 +37,7 @@ export function registerSettings() {
     });
 
     game.settings.register(MODULE_ID, 'globalReputations', {
-        name: 'Globale Reputationen',
+        name: 'Global Reputations',
         scope: 'world',
         config: false,
         type: Object,

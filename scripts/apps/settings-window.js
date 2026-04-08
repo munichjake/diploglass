@@ -1,7 +1,6 @@
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+import { MODULE_ID, getReputationLevels } from "../config.js";
 
-// Module ID constant - duplicated to avoid circular dependency with config.js
-const MODULE_ID = 'diploglass';
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 /**
  * Settings window for the Diplomatic Ties module.
@@ -40,8 +39,7 @@ export class SettingsWindow extends HandlebarsApplicationMixin(ApplicationV2) {
         const chatMessageVisibility = game.settings.get(MODULE_ID, 'chatMessageVisibility');
         const startAtNeutral = game.settings.get(MODULE_ID, 'startAtNeutral');
 
-        // Get reputation levels from the tracker (avoids circular dependency)
-        const levels = window.FactionReputationTracker?.getReputationLevels() || [];
+        const levels = getReputationLevels();
 
         return {
             usePerPlayerReputation,
@@ -60,11 +58,16 @@ export class SettingsWindow extends HandlebarsApplicationMixin(ApplicationV2) {
     async _onSubmit(event, form, formData) {
         const data = formData.object;
 
-        await game.settings.set(MODULE_ID, 'usePerPlayerReputation', data.usePerPlayerReputation ?? false);
-        await game.settings.set(MODULE_ID, 'postChatMessages', data.postChatMessages ?? false);
-        await game.settings.set(MODULE_ID, 'chatMessageVisibility', data.chatMessageVisibility);
-        await game.settings.set(MODULE_ID, 'startAtNeutral', data.startAtNeutral ?? false);
+        try {
+            await game.settings.set(MODULE_ID, 'usePerPlayerReputation', data.usePerPlayerReputation ?? false);
+            await game.settings.set(MODULE_ID, 'postChatMessages', data.postChatMessages ?? false);
+            await game.settings.set(MODULE_ID, 'chatMessageVisibility', data.chatMessageVisibility);
+            await game.settings.set(MODULE_ID, 'startAtNeutral', data.startAtNeutral ?? false);
 
-        ui.notifications.info(game.i18n.localize("DIPLOGLASS.Settings.SettingsSaved"));
+            ui.notifications.info(game.i18n.localize("DIPLOGLASS.Settings.SettingsSaved"));
+        } catch (error) {
+            console.error('DiploGlass | Failed to save settings:', error);
+            ui.notifications.error(game.i18n.localize("DIPLOGLASS.ErrorSavingSettings") || "Failed to save settings");
+        }
     }
 }

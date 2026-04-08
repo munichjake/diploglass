@@ -35,6 +35,7 @@
     "GlobalMode": "Global",
     "GroupReputation": "Gruppe Omdømme",
     "Factions": "Fraktioner",
+    "ExportFactions": "Eksporter fraktioner",
     "SearchFactions": "Søg fraktioner",
     "SelectFaction": "Vælg en Fraktion",
     "SelectFactionHint": "Vælg en fraktion fra sidepanelet for at se og administrere dens omdømme.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "Antallet af trin skal være mellem 3 og 21.",
       "ErrorChangingReputation": "Fejl ved ændring af omdømme.",
       "ErrorSettingReputation": "Fejl ved indstilling af omdømme.",
-      "ErrorResettingFaction": "Fejl ved nulstilling af fraktion."
+      "ErrorResettingFaction": "Fejl ved nulstilling af fraktion.",
+      "FactionsExported": "Fraktioner eksporteret."
     },
 
     "Dialogs": {

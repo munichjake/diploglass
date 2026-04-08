@@ -35,6 +35,7 @@
     "GlobalMode": "Global",
     "GroupReputation": "Reputación del Grupo",
     "Factions": "Facciones",
+    "ExportFactions": "Exportar facciones",
     "SearchFactions": "Buscar facciones",
     "SelectFaction": "Selecciona una Facción",
     "SelectFactionHint": "Elige una facción de la barra lateral para ver y gestionar su reputación.",
@@ -142,7 +143,8 @@
       "PleaseEnterName": "Por favor, introduce un nombre.",
       "ErrorChangingReputation": "Error al cambiar la reputación.",
       "ErrorSettingReputation": "Error al establecer la reputación.",
-      "ErrorResettingFaction": "Error al reiniciar la facción."
+      "ErrorResettingFaction": "Error al reiniciar la facción.",
+      "FactionsExported": "Facciones exportadas correctamente."
     },
 
     "Dialogs": {

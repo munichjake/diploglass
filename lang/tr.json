@@ -35,6 +35,7 @@
     "GlobalMode": "Genel",
     "GroupReputation": "Grup İtibarı",
     "Factions": "Hizipler",
+    "ExportFactions": "Fraksiyonları dışa aktar",
     "SearchFactions": "Hizip ara",
     "SelectFaction": "Hizip Seç",
     "SelectFactionHint": "İtibarı görüntülemek ve yönetmek için kenar çubuğundan bir hizip seçin.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "Adım sayısı 3 ile 21 arasında olmalıdır.",
       "ErrorChangingReputation": "İtibar değiştirme hatası.",
       "ErrorSettingReputation": "İtibar ayarlama hatası.",
-      "ErrorResettingFaction": "Hizip sıfırlama hatası."
+      "ErrorResettingFaction": "Hizip sıfırlama hatası.",
+      "FactionsExported": "Fraksiyonlar başarıyla dışa aktarıldı."
     },
 
     "Dialogs": {

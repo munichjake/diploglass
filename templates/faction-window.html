@@ -41,6 +41,11 @@
 
         {{#if hasGMPermission}}
         <div class="fr-nav-footer">
+            {{#if factions}}
+            <button class="fr-btn fr-btn-small" data-action="exportFactions" title="{{localize 'DIPLOGLASS.ExportFactions'}}">
+                <i class="fas fa-file-export"></i>
+            </button>
+            {{/if}}
             <button class="fr-btn fr-btn-small" data-action="openSettings" title="{{localize 'DIPLOGLASS.Settings.Title'}}">
                 <i class="fas fa-cog"></i>
             </button>

@@ -35,6 +35,7 @@
     "GlobalMode": "전역",
     "GroupReputation": "그룹 평판",
     "Factions": "세력",
+    "ExportFactions": "세력 내보내기",
     "SearchFactions": "세력 검색",
     "SelectFaction": "세력 선택",
     "SelectFactionHint": "사이드바에서 세력을 선택하여 평판을 보고 관리하세요.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "단계 수는 3에서 21 사이여야 합니다.",
       "ErrorChangingReputation": "평판 변경 중 오류가 발생했습니다.",
       "ErrorSettingReputation": "평판 설정 중 오류가 발생했습니다.",
-      "ErrorResettingFaction": "세력 초기화 중 오류가 발생했습니다."
+      "ErrorResettingFaction": "세력 초기화 중 오류가 발생했습니다.",
+      "FactionsExported": "세력을 성공적으로 내보냈습니다."
     },
 
     "Dialogs": {
