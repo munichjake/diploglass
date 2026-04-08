@@ -161,6 +161,9 @@ export class FactionReputationTracker {
 
         await this.setFactions(factions);
 
+        // Add to faction order
+        await this.addFactionToOrder(factionId);
+
         // Initialize Reputation - use faction-specific min value if not starting at neutral
         const minValue = this.getMinValueForSteps(factionSteps);
         const startLevel = startAtNeutral ? 0 : minValue;
@@ -202,6 +205,67 @@ export class FactionReputationTracker {
         const globalReputations = this.getGlobalReputations();
         delete globalReputations[factionId];
         await this.setGlobalReputations(globalReputations);
+
+        // Remove from faction order
+        await this.removeFactionFromOrder(factionId);
+    }
+
+    // Faction Order Management
+
+    static getFactionOrder() {
+        return game.settings.get(MODULE_ID, 'factionOrder') || [];
+    }
+
+    static async setFactionOrder(order) {
+        await game.settings.set(MODULE_ID, 'factionOrder', order);
+    }
+
+    /**
+     * Get faction order, ensuring all factions are included and no stale IDs remain.
+     * @returns {string[]} Ordered array of faction IDs
+     */
+    static getSanitizedFactionOrder() {
+        const order = this.getFactionOrder();
+        const factionIds = Object.keys(this.getFactions());
+
+        // Keep only IDs that still exist, in their saved order
+        const validOrder = order.filter(id => factionIds.includes(id));
+
+        // Append any factions not yet in the order (e.g. newly created)
+        for (const id of factionIds) {
+            if (!validOrder.includes(id)) {
+                validOrder.push(id);
+            }
+        }
+
+        return validOrder;
+    }
+
+    static async addFactionToOrder(factionId) {
+        const order = this.getFactionOrder();
+        if (!order.includes(factionId)) {
+            order.push(factionId);
+            await this.setFactionOrder(order);
+        }
+    }
+
+    static async removeFactionFromOrder(factionId) {
+        const order = this.getFactionOrder();
+        const idx = order.indexOf(factionId);
+        if (idx !== -1) {
+            order.splice(idx, 1);
+            await this.setFactionOrder(order);
+        }
+    }
+
+    static async reorderFaction(factionId, newIndex) {
+        const order = this.getSanitizedFactionOrder();
+        const oldIndex = order.indexOf(factionId);
+        if (oldIndex === -1) return;
+
+        order.splice(oldIndex, 1);
+        order.splice(newIndex, 0, factionId);
+        await this.setFactionOrder(order);
     }
 
     static async changeReputation(userId, factionId, change) {
@@ -602,13 +666,13 @@ export class FactionReputationTracker {
             const faction = factions[id];
             if (!faction) continue;
 
-            // Export structure only — no reputation values, no changeLog
             exportFactions[id] = {
                 name: faction.name,
                 steps: faction.steps ?? this.DEFAULT_STEPS,
                 startAtNeutral: faction.startAtNeutral ?? true,
                 usePerPlayerReputation: faction.usePerPlayerReputation ?? false,
                 icon: faction.icon || null,
+                changeLog: faction.changeLog || [],
                 // Note: journalId and rollTableId are world-specific and won't transfer
             };
         }

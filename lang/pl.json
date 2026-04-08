@@ -37,6 +37,7 @@
     "Factions": "Frakcje",
     "ExportFactions": "Eksportuj frakcje",
     "SearchFactions": "Szukaj frakcji",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Wybierz Frakcję",
     "SelectFactionHint": "Wybierz frakcję z paska bocznego, aby wyświetlić i zarządzać jej reputacją.",
     "CurrentValue": "Aktualna Wartość",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Kontroluje, czy gracze mogą widzieć i korzystać z okna reputacji.",
       "PlayerAccessNone": "Ukryty (tylko MG)",
       "PlayerAccessView": "Tylko podgląd",
-      "PlayerAccessEdit": "Podgląd i edycja"
+      "PlayerAccessEdit": "Podgląd i edycja",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

@@ -37,6 +37,7 @@
     "Factions": "Ryhmittymät",
     "ExportFactions": "Vie ryhmittymät",
     "SearchFactions": "Etsi ryhmittymiä",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Valitse Ryhmittymä",
     "SelectFactionHint": "Valitse ryhmittymä sivupalkista nähdäksesi ja hallitaksesi sen mainetta.",
     "CurrentValue": "Nykyinen Arvo",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Hallitsee voivatko pelaajat nähdä ja käyttää maine-ikkunaa.",
       "PlayerAccessNone": "Piilotettu (vain PJ)",
       "PlayerAccessView": "Vain katselu",
-      "PlayerAccessEdit": "Katselu ja muokkaus"
+      "PlayerAccessEdit": "Katselu ja muokkaus",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

@@ -37,6 +37,7 @@
     "Factions": "Factions",
     "ExportFactions": "Export Factions",
     "SearchFactions": "Search factions",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Select a Faction",
     "SelectFactionHint": "Choose a faction from the sidebar to view and manage its reputation.",
     "CurrentValue": "Current Value",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Controls whether players can see and interact with the reputation window.",
       "PlayerAccessNone": "Hidden (GM only)",
       "PlayerAccessView": "View only",
-      "PlayerAccessEdit": "View and edit"
+      "PlayerAccessEdit": "View and edit",
+
+      "ChangeLogPageSize": "Change Log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
     
     "Notifications": {

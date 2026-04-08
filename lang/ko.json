@@ -37,6 +37,7 @@
     "Factions": "세력",
     "ExportFactions": "세력 내보내기",
     "SearchFactions": "세력 검색",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "세력 선택",
     "SelectFactionHint": "사이드바에서 세력을 선택하여 평판을 보고 관리하세요.",
     "CurrentValue": "현재 값",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "플레이어가 평판 창을 보고 상호작용할 수 있는지 여부를 제어합니다.",
       "PlayerAccessNone": "숨김 (GM만)",
       "PlayerAccessView": "보기만",
-      "PlayerAccessEdit": "보기 및 편집"
+      "PlayerAccessEdit": "보기 및 편집",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

@@ -17,6 +17,9 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
     // Track active tab
     _activeTab = 'overview';
 
+    // Track changelog pagination (per faction)
+    _changeLogPage = {};
+
     static DEFAULT_OPTIONS = {
         id: "faction-reputation-window",
         tag: "div",
@@ -43,7 +46,9 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
             openSettings: FactionReputationWindow.prototype._onOpenSettings,
             switchTab: FactionReputationWindow.prototype._onSwitchTab,
             addComment: FactionReputationWindow.prototype._onAddComment,
-            exportFactions: FactionReputationWindow.prototype._onExportFactions
+            exportFactions: FactionReputationWindow.prototype._onExportFactions,
+            changeLogPrev: FactionReputationWindow.prototype._onChangeLogPrev,
+            changeLogNext: FactionReputationWindow.prototype._onChangeLogNext
         }
     };
 
@@ -106,7 +111,8 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
 
     async _prepareContext(options) {
         const factions = FactionReputationTracker.getFactionsWithBounds();
-        const factionList = Object.values(factions);
+        const factionOrder = FactionReputationTracker.getSanitizedFactionOrder();
+        const factionList = factionOrder.map(id => factions[id]).filter(Boolean);
 
         // Get both reputation data stores (we'll choose per faction which one to use)
         const playerReputations = FactionReputationTracker.getPlayerReputations();
@@ -194,8 +200,14 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
                 // Generate level details for Levels tab (using faction levels)
                 const levelDetails = this._generateLevelDetailsFromFactionLevels(factionLevels, reputation);
 
-                // Get and format change log entries
-                const changeLogEntries = this._formatChangeLogEntries(faction.id);
+                // Get and format change log entries with pagination
+                const allChangeLogEntries = this._formatChangeLogEntries(faction.id);
+                const changeLogPageSize = game.settings.get('diploglass', 'changeLogPageSize') || 5;
+                const currentPage = this._changeLogPage[faction.id] || 0;
+                const totalPages = Math.max(1, Math.ceil(allChangeLogEntries.length / changeLogPageSize));
+                const clampedPage = Math.min(currentPage, totalPages - 1);
+                if (clampedPage !== currentPage) this._changeLogPage[faction.id] = clampedPage;
+                const changeLogEntries = allChangeLogEntries.slice(clampedPage * changeLogPageSize, (clampedPage + 1) * changeLogPageSize);
 
                 selectedFaction = {
                     ...faction,
@@ -209,6 +221,10 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
                     barSegments: this._generateBarSegments(steps, minValue, maxValue, reputation),
                     levelDetails: levelDetails,
                     changeLog: changeLogEntries,
+                    changeLogShowPagination: totalPages > 1,
+                    changeLogPageLabel: `${clampedPage + 1} / ${totalPages}`,
+                    changeLogHasPrev: clampedPage > 0,
+                    changeLogHasNext: clampedPage < totalPages - 1,
                     isPerPlayerMode: selectedFactionUsePerPlayer
                 };
             }
@@ -648,6 +664,11 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
             searchInput.addEventListener('input', this._onSearchFactions.bind(this));
         }
 
+        // Attach drag-and-drop reordering for GMs
+        if (game.user.isGM) {
+            this._attachDragAndDrop();
+        }
+
         // Restore active tab after render
         if (this._activeTab && this._activeTab !== 'overview') {
             // Check if the tab exists (e.g., players tab only exists in per-player mode)
@@ -677,6 +698,147 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
         if (FactionReputationWindow._activeInstance === this) {
             FactionReputationWindow._activeInstance = null;
         }
+    }
+
+    /**
+     * Attach drag-and-drop reordering to sidebar faction items
+     */
+    _attachDragAndDrop() {
+        const navList = this.element.querySelector('.fr-nav-list');
+        if (!navList) return;
+
+        const navItems = navList.querySelectorAll('.fr-nav-item[draggable="true"]');
+        let draggedItem = null;
+        let draggedHeight = 0;
+        let dropTargetIndex = -1;
+
+        // Create ghost placeholder (same shape as a nav-item, dashed border)
+        const ghost = document.createElement('div');
+        ghost.className = 'fr-drag-ghost';
+        let ghostVisible = false;
+
+        const clearGhost = () => {
+            if (ghostVisible) {
+                ghost.remove();
+                ghostVisible = false;
+            }
+            dropTargetIndex = -1;
+        };
+
+        const showGhostAt = (referenceItem, position) => {
+            ghost.style.height = `${draggedHeight}px`;
+            // Avoid unnecessary DOM thrash if ghost is already in the right spot
+            const nextSibling = ghost.nextElementSibling;
+            const prevSibling = ghost.previousElementSibling;
+            if (position === 'before' && nextSibling === referenceItem) return;
+            if (position === 'after' && prevSibling === referenceItem) return;
+
+            clearGhost();
+            if (position === 'before') {
+                referenceItem.before(ghost);
+            } else {
+                referenceItem.after(ghost);
+            }
+            ghostVisible = true;
+        };
+
+        // Compute target index from ghost position in the list
+        const computeTargetIndex = () => {
+            const items = [...navList.querySelectorAll('.fr-nav-item[draggable="true"]')];
+            const allChildren = [...navList.children];
+            const ghostIdx = allChildren.indexOf(ghost);
+            if (ghostIdx === -1) return -1;
+
+            // Count how many non-dragging nav-items come before the ghost
+            let idx = 0;
+            for (const child of allChildren) {
+                if (child === ghost) break;
+                if (child.classList.contains('fr-nav-item') && !child.classList.contains('fr-dragging')) {
+                    idx++;
+                }
+            }
+            return idx;
+        };
+
+        // dragstart on each item
+        navItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                draggedItem = item;
+                draggedHeight = item.offsetHeight;
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', item.dataset.factionId);
+                requestAnimationFrame(() => item.classList.add('fr-dragging'));
+            });
+
+            item.addEventListener('dragend', async () => {
+                const id = draggedItem?.dataset.factionId;
+                const idx = dropTargetIndex;
+                draggedItem?.classList.remove('fr-dragging');
+                draggedItem = null;
+
+                // If ghost was placed somewhere, use that as drop target
+                if (ghostVisible && id && idx >= 0) {
+                    clearGhost();
+                    await FactionReputationTracker.reorderFaction(id, idx);
+                    this.render();
+                } else {
+                    clearGhost();
+                }
+            });
+        });
+
+        // dragover on the whole list — finds the closest item and positions ghost
+        navList.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            if (!draggedItem) return;
+
+            const items = [...navList.querySelectorAll('.fr-nav-item[draggable="true"]:not(.fr-dragging)')];
+            if (items.length === 0) return;
+
+            // Find the closest item to the cursor
+            let closest = null;
+            let closestDist = Infinity;
+            let insertBefore = true;
+
+            for (const item of items) {
+                const rect = item.getBoundingClientRect();
+                const midY = rect.top + rect.height / 2;
+                const dist = Math.abs(e.clientY - midY);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closest = item;
+                    insertBefore = e.clientY < midY;
+                }
+            }
+
+            if (closest) {
+                showGhostAt(closest, insertBefore ? 'before' : 'after');
+                dropTargetIndex = computeTargetIndex();
+            }
+        });
+
+        // drop on the list itself (catches drops on ghost, gaps, etc.)
+        navList.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            if (!draggedItem || dropTargetIndex < 0) { clearGhost(); return; }
+
+            const draggedId = draggedItem.dataset.factionId;
+            const idx = dropTargetIndex;
+            draggedItem.classList.remove('fr-dragging');
+            draggedItem = null;
+            clearGhost();
+
+            await FactionReputationTracker.reorderFaction(draggedId, idx);
+            this.render();
+        });
+
+        // Clear ghost when leaving the list
+        navList.addEventListener('dragleave', (e) => {
+            if (!navList.contains(e.relatedTarget)) {
+                clearGhost();
+            }
+        });
     }
 
     /**
@@ -838,6 +1000,79 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
                 html.closest('.dialog').addClass('fr-glass-dialog');
             }
         }).render(true);
+    }
+
+    _onChangeLogPrev() {
+        if (!this._selectedFactionId) return;
+        const page = this._changeLogPage[this._selectedFactionId] || 0;
+        if (page > 0) {
+            this._changeLogPage[this._selectedFactionId] = page - 1;
+            this._updateChangeLogDOM();
+        }
+    }
+
+    _onChangeLogNext() {
+        if (!this._selectedFactionId) return;
+        this._changeLogPage[this._selectedFactionId] = (this._changeLogPage[this._selectedFactionId] || 0) + 1;
+        this._updateChangeLogDOM();
+    }
+
+    /**
+     * Update only the changelog DOM without re-rendering the whole window.
+     */
+    _updateChangeLogDOM() {
+        const factionId = this._selectedFactionId;
+        if (!factionId) return;
+
+        const allEntries = this._formatChangeLogEntries(factionId);
+        const pageSize = game.settings.get('diploglass', 'changeLogPageSize') || 5;
+        const totalPages = Math.max(1, Math.ceil(allEntries.length / pageSize));
+        let page = this._changeLogPage[factionId] || 0;
+        page = Math.min(page, totalPages - 1);
+        this._changeLogPage[factionId] = page;
+
+        const entries = allEntries.slice(page * pageSize, (page + 1) * pageSize);
+        const isGM = game.user.isGM;
+
+        // Build entry HTML
+        const historyEl = this.element.querySelector('.fr-log-history');
+        if (!historyEl) return;
+
+        historyEl.innerHTML = entries.map(entry => {
+            const commentHtml = entry.comment
+                ? `<div class="fr-log-comment"><i class="fas fa-comment"></i><span>${entry.comment}</span></div>`
+                : '';
+            const commentBtnHtml = isGM
+                ? `<button class="fr-log-comment-btn" data-action="addComment" data-faction-id="${factionId}" data-entry-id="${entry.id}" title="${game.i18n.localize('DIPLOGLASS.ChangeLog.AddComment')}"><i class="fas ${entry.comment ? 'fa-edit' : 'fa-comment'}"></i></button>`
+                : '';
+            return `<div class="fr-log-change ${entry.changeClass}">
+                <div class="fr-log-change-header">
+                    <span class="fr-log-change-icon"><i class="fas ${entry.changeIcon}"></i></span>
+                    <span class="fr-log-change-values">${entry.oldValue} → ${entry.newValue}</span>
+                    <span class="fr-log-change-date">${entry.date}</span>
+                </div>
+                <div class="fr-log-change-meta">
+                    <span>${entry.userName}</span>
+                    <span class="fr-log-change-by">${game.i18n.localize('DIPLOGLASS.ChangeLog.By')} ${entry.changedByName}</span>
+                </div>
+                ${commentHtml}
+                ${commentBtnHtml}
+            </div>`;
+        }).join('');
+
+        // Update pagination controls
+        const pagination = this.element.querySelector('.fr-log-pagination');
+        if (totalPages > 1) {
+            if (pagination) {
+                pagination.querySelector('.fr-log-page-info').textContent = `${page + 1} / ${totalPages}`;
+                const prevBtn = pagination.querySelector('[data-action="changeLogPrev"]');
+                const nextBtn = pagination.querySelector('[data-action="changeLogNext"]');
+                prevBtn.disabled = page <= 0;
+                nextBtn.disabled = page >= totalPages - 1;
+            }
+        } else if (pagination) {
+            pagination.remove();
+        }
     }
 }
 
