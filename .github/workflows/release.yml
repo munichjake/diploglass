@@ -4,26 +4,28 @@ on:
   push:
     tags:
       - 'v*'
-  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Extract version from tag
         id: version
         run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
-      - name: Update module.json version
+      - name: Update module.json version and download URL
         run: |
-          jq '.version = "${{ steps.version.outputs.version }}" | .download = "https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.version }}/diploglass.zip"' module.json > module.tmp.json
+          jq --arg ver "${{ steps.version.outputs.version }}" \
+             --arg dl "https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.version }}/diploglass.zip" \
+             '.version = $ver | .download = $dl' module.json > module.tmp.json
           mv module.tmp.json module.json
 
-      - name: Create ZIP
+      - name: Create diploglass.zip
         run: |
           zip -r diploglass.zip \
             module.json \
@@ -31,21 +33,18 @@ jobs:
             styles/ \
             templates/ \
             lang/ \
-            screenshots/ \
-            README.md \
-            CHANGELOG.md \
             LICENSE
 
-      - name: Upload Release Asset via API
-        run: |
-          curl -X PATCH \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/${{ github.repository }}/releases/tags/v${{ steps.version.outputs.version }}" \
-            -d '{"draft":false,"prerelease":false}'
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            diploglass.zip
+            module.json
+          generate_release_notes: true
 
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: application/zip" \
-            --data-binary @diploglass.zip \
-            "https://uploads.github.com/repos/${{ github.repository }}/releases/v${{ steps.version.outputs.version }}/assets?name=diploglass.zip"
+      - name: Notify FoundryVTT
+        uses: cs96and/FoundryVTT-release-package@v1
+        with:
+          package-token: ${{ secrets.FOUNDRY_PACKAGE_TOKEN }}
+          manifest-url: https://github.com/${{ github.repository }}/releases/latest/download/module.json
