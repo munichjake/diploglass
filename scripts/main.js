@@ -19,8 +19,11 @@ function openReputationWindow() {
     }
 }
 
-// Make tracker globally available for macros/API usage
-window.FactionReputationTracker = FactionReputationTracker;
+// Make module API globally available for macros
+window.DiploGlass = {
+    open: openReputationWindow,
+    FactionReputationTracker
+};
 
 // Savras telemetry - anonymous usage statistics (opt-out via module settings)
 export const telemetry = new SavrasLib({

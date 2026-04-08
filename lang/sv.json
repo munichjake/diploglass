@@ -37,6 +37,7 @@
     "Factions": "Fraktioner",
     "ExportFactions": "Exportera fraktioner",
     "SearchFactions": "Sök fraktioner",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Välj en Fraktion",
     "SelectFactionHint": "Välj en fraktion från sidofältet för att visa och hantera dess rykte.",
     "CurrentValue": "Nuvarande Värde",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Styr om spelare kan se och interagera med ryktesfönstret.",
       "PlayerAccessNone": "Dold (endast GM)",
       "PlayerAccessView": "Endast visning",
-      "PlayerAccessEdit": "Visning och redigering"
+      "PlayerAccessEdit": "Visning och redigering",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

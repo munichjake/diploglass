@@ -39,6 +39,7 @@ export class SettingsWindow extends HandlebarsApplicationMixin(ApplicationV2) {
         const chatMessageVisibility = game.settings.get(MODULE_ID, 'chatMessageVisibility');
         const startAtNeutral = game.settings.get(MODULE_ID, 'startAtNeutral');
 
+        const changeLogPageSize = game.settings.get(MODULE_ID, 'changeLogPageSize');
         const levels = getReputationLevels();
 
         return {
@@ -46,6 +47,7 @@ export class SettingsWindow extends HandlebarsApplicationMixin(ApplicationV2) {
             postChatMessages,
             chatMessageVisibility,
             startAtNeutral,
+            changeLogPageSize,
             visibilityOptions: [
                 { value: 'gm', label: 'DIPLOGLASS.Settings.GMOnly', selected: chatMessageVisibility === 'gm' },
                 { value: 'all', label: 'DIPLOGLASS.Settings.AllPlayers', selected: chatMessageVisibility === 'all' },
@@ -63,6 +65,7 @@ export class SettingsWindow extends HandlebarsApplicationMixin(ApplicationV2) {
             await game.settings.set(MODULE_ID, 'postChatMessages', data.postChatMessages ?? false);
             await game.settings.set(MODULE_ID, 'chatMessageVisibility', data.chatMessageVisibility);
             await game.settings.set(MODULE_ID, 'startAtNeutral', data.startAtNeutral ?? false);
+            await game.settings.set(MODULE_ID, 'changeLogPageSize', Math.clamped(Number(data.changeLogPageSize) || 5, 3, 50));
 
             ui.notifications.info(game.i18n.localize("DIPLOGLASS.Settings.SettingsSaved"));
         } catch (error) {

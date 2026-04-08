@@ -37,6 +37,7 @@
     "Factions": "派閥",
     "ExportFactions": "派閥をエクスポート",
     "SearchFactions": "派閥を検索",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "派閥を選択",
     "SelectFactionHint": "サイドバーから派閥を選択して評判を表示・管理します。",
     "CurrentValue": "現在の値",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "プレイヤーが評判ウィンドウを見たり操作したりできるかを制御します。",
       "PlayerAccessNone": "非表示（GMのみ）",
       "PlayerAccessView": "閲覧のみ",
-      "PlayerAccessEdit": "閲覧と編集"
+      "PlayerAccessEdit": "閲覧と編集",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

@@ -37,6 +37,7 @@
     "Factions": "Fraktionen",
     "ExportFactions": "Fraktionen exportieren",
     "SearchFactions": "Fraktionen suchen",
+    "DragToReorder": "Ziehen zum Sortieren",
     "SelectFaction": "Fraktion auswählen",
     "SelectFactionHint": "Wähle eine Fraktion aus der Seitenleiste, um ihre Reputation anzuzeigen und zu verwalten.",
     "CurrentValue": "Aktueller Wert",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Bestimmt, ob Spieler das Reputations-Fenster sehen und damit interagieren können.",
       "PlayerAccessNone": "Versteckt (nur Spielleiter)",
       "PlayerAccessView": "Nur ansehen",
-      "PlayerAccessEdit": "Ansehen und bearbeiten"
+      "PlayerAccessEdit": "Ansehen und bearbeiten",
+
+      "ChangeLogPageSize": "Changelog-Einträge pro Seite",
+      "ChangeLogPageSizeHint": "Anzahl der Changelog-Einträge, die pro Seite in der Fraktionsansicht angezeigt werden."
     },
 
     "Notifications": {

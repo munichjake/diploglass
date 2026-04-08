@@ -238,6 +238,67 @@
     object-fit: cover;
 }
 
+/* Drag Handle */
+.fr-drag-handle {
+    color: var(--muted2);
+    cursor: grab;
+    padding: 2px 0;
+    flex: 0 0 auto;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity .15s ease;
+}
+
+.fr-nav-item:hover .fr-drag-handle {
+    opacity: .6;
+}
+
+.fr-drag-handle:hover {
+    opacity: 1 !important;
+    color: var(--text);
+}
+
+.fr-drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Drag States */
+.fr-nav-item.fr-dragging {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    transition: opacity .15s ease, height .2s ease, padding .2s ease;
+}
+
+/* Ghost Placeholder */
+.fr-drag-ghost {
+    border-radius: 14px;
+    border: 1px dashed rgba(150, 170, 200, .35);
+    background: rgba(100, 150, 200, .04);
+    pointer-events: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    animation: fr-ghost-grow .2s ease forwards;
+}
+
+@keyframes fr-ghost-grow {
+    from {
+        opacity: 0;
+        max-height: 0;
+        margin-top: -4px;
+        margin-bottom: -4px;
+    }
+    to {
+        opacity: 1;
+        max-height: 80px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
 /* Pills (Status badges) */
 .fr-pill {
     font-size: 11.5px;
@@ -960,6 +1021,46 @@
     font-size: 11px;
     text-align: center;
     padding: 12px;
+}
+
+.fr-log-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 4px 0;
+}
+
+.fr-log-page-btn {
+    background: var(--glass-bg, rgba(255,255,255,0.06));
+    border: 1px solid var(--stroke);
+    border-radius: 4px;
+    color: var(--text);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background 0.15s;
+}
+
+.fr-log-page-btn:hover:not(:disabled) {
+    background: var(--glass-hover, rgba(255,255,255,0.12));
+}
+
+.fr-log-page-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.fr-log-page-info {
+    font-size: 11px;
+    color: var(--muted2);
+    min-width: 40px;
+    text-align: center;
 }
 
 /* ========================================

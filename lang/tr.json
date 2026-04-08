@@ -37,6 +37,7 @@
     "Factions": "Hizipler",
     "ExportFactions": "Fraksiyonları dışa aktar",
     "SearchFactions": "Hizip ara",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Hizip Seç",
     "SelectFactionHint": "İtibarı görüntülemek ve yönetmek için kenar çubuğundan bir hizip seçin.",
     "CurrentValue": "Mevcut Değer",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Oyuncuların itibar penceresini görüp göremeyeceğini ve etkileşimde bulunup bulunamayacağını kontrol eder.",
       "PlayerAccessNone": "Gizli (Sadece GM)",
       "PlayerAccessView": "Sadece görüntüleme",
-      "PlayerAccessEdit": "Görüntüleme ve düzenleme"
+      "PlayerAccessEdit": "Görüntüleme ve düzenleme",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

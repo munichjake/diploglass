@@ -7,6 +7,7 @@ All notable changes to DiploGlass will be documented in this file.
 ### Added
 - **Foundry VTT v14 Kompatibilität** - Vollständige Unterstützung für Foundry VTT v14 (verifiziert bis v14.359)
 - **Export von Fraktionen** ([#3](https://github.com/munichjake/diploglass/issues/3)) - Fraktions-Strukturen (ohne Fortschritt) als JSON exportieren, ideal für West Marches Kampagnen
+- **Drag & Drop Sortierung** - Fraktionen in der Seitenleiste per Drag & Drop umsortieren (nur GM)
 - **Savras Telemetry** - Anonyme, opt-out Nutzungsstatistiken zur Feature-Analyse (keine persönlichen Daten)
 
 ### Fixed

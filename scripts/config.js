@@ -44,6 +44,14 @@ export function registerSettings() {
         default: {}
     });
 
+    game.settings.register(MODULE_ID, 'factionOrder', {
+        name: 'Faction Order',
+        scope: 'world',
+        config: false,
+        type: Array,
+        default: []
+    });
+
     game.settings.register(MODULE_ID, 'usePerPlayerReputation', {
         name: 'DIPLOGLASS.Settings.UsePerPlayerReputation',
         hint: 'DIPLOGLASS.Settings.UsePerPlayerReputationHint',
@@ -97,6 +105,15 @@ export function registerSettings() {
             'edit': 'DIPLOGLASS.Settings.PlayerAccessEdit'
         },
         default: 'none'
+    });
+
+    game.settings.register(MODULE_ID, 'changeLogPageSize', {
+        name: 'DIPLOGLASS.Settings.ChangeLogPageSize',
+        hint: 'DIPLOGLASS.Settings.ChangeLogPageSizeHint',
+        scope: 'world',
+        config: false,
+        type: Number,
+        default: 5
     });
 
     // Register module settings menu entry

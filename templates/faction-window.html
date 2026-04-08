@@ -19,7 +19,12 @@
         <div class="fr-nav-list">
             {{#if factions}}
                 {{#each factions as |faction|}}
-                <div class="fr-nav-item {{#if faction.isSelected}}active{{/if}}" data-faction-id="{{faction.id}}" data-action="selectFaction">
+                <div class="fr-nav-item {{#if faction.isSelected}}active{{/if}}" data-faction-id="{{faction.id}}" data-action="selectFaction" {{#if ../hasGMPermission}}draggable="true"{{/if}}>
+                    {{#if ../hasGMPermission}}
+                    <span class="fr-drag-handle" title="{{localize 'DIPLOGLASS.DragToReorder'}}">
+                        <i class="fas fa-grip-vertical"></i>
+                    </span>
+                    {{/if}}
                     <div class="fr-nav-item-name">
                         <div class="fr-glyph">
                             {{#if faction.icon}}<img src="{{faction.icon}}" alt="">{{else}}<i class="fas fa-flag"></i>{{/if}}
@@ -237,6 +242,17 @@
                         </div>
                         {{/each}}
                     </div>
+                    {{#if selectedFaction.changeLogShowPagination}}
+                    <div class="fr-log-pagination">
+                        <button class="fr-log-page-btn" data-action="changeLogPrev" {{#unless selectedFaction.changeLogHasPrev}}disabled{{/unless}}>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="fr-log-page-info">{{selectedFaction.changeLogPageLabel}}</span>
+                        <button class="fr-log-page-btn" data-action="changeLogNext" {{#unless selectedFaction.changeLogHasNext}}disabled{{/unless}}>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    {{/if}}
                     {{else}}
                     <div class="fr-log-empty">
                         <span>{{localize "DIPLOGLASS.ChangeLog.NoEntries"}}</span>

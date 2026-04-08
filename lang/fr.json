@@ -37,6 +37,7 @@
     "Factions": "Factions",
     "ExportFactions": "Exporter les factions",
     "SearchFactions": "Rechercher des factions",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Sélectionner une Faction",
     "SelectFactionHint": "Choisissez une faction dans la barre latérale pour voir et gérer sa réputation.",
     "CurrentValue": "Valeur Actuelle",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Contrôle si les joueurs peuvent voir et interagir avec la fenêtre de réputation.",
       "PlayerAccessNone": "Caché (MJ uniquement)",
       "PlayerAccessView": "Affichage uniquement",
-      "PlayerAccessEdit": "Afficher et modifier"
+      "PlayerAccessEdit": "Afficher et modifier",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

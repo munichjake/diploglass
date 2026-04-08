@@ -37,6 +37,7 @@
     "Factions": "Fazioni",
     "ExportFactions": "Esporta fazioni",
     "SearchFactions": "Cerca fazioni",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Seleziona una Fazione",
     "SelectFactionHint": "Scegli una fazione dalla barra laterale per visualizzare e gestire la sua reputazione.",
     "CurrentValue": "Valore Attuale",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Controlla se i giocatori possono vedere e interagire con la finestra di reputazione.",
       "PlayerAccessNone": "Nascosto (solo GM)",
       "PlayerAccessView": "Solo visualizzazione",
-      "PlayerAccessEdit": "Visualizzare e modificare"
+      "PlayerAccessEdit": "Visualizzare e modificare",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

@@ -20,6 +20,12 @@
             </label>
             <p class="fr-form-hint">{{localize "DIPLOGLASS.Settings.StartAtNeutralHint"}}</p>
         </div>
+
+        <div class="fr-form-group">
+            <label>{{localize "DIPLOGLASS.Settings.ChangeLogPageSize"}}</label>
+            <input type="number" name="changeLogPageSize" value="{{changeLogPageSize}}" min="3" max="50" step="1">
+            <p class="fr-form-hint">{{localize "DIPLOGLASS.Settings.ChangeLogPageSizeHint"}}</p>
+        </div>
     </section>
 
     <section class="fr-settings-section">

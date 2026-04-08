@@ -37,6 +37,7 @@
     "Factions": "Fraktioner",
     "ExportFactions": "Eksporter fraktioner",
     "SearchFactions": "Søg fraktioner",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Vælg en Fraktion",
     "SelectFactionHint": "Vælg en fraktion fra sidepanelet for at se og administrere dens omdømme.",
     "CurrentValue": "Nuværende Værdi",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Styrer om spillere kan se og interagere med omdømme vinduet.",
       "PlayerAccessNone": "Skjult (kun GM)",
       "PlayerAccessView": "Kun visning",
-      "PlayerAccessEdit": "Visning og redigering"
+      "PlayerAccessEdit": "Visning og redigering",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {

@@ -37,6 +37,7 @@
     "Factions": "Frakciók",
     "ExportFactions": "Frakciók exportálása",
     "SearchFactions": "Frakciók keresése",
+    "DragToReorder": "Drag to reorder",
     "SelectFaction": "Válassz Frakciót",
     "SelectFactionHint": "Válassz egy frakciót az oldalsávból a hírnév megtekintéséhez és kezeléséhez.",
     "CurrentValue": "Jelenlegi Érték",
@@ -130,7 +131,10 @@
       "PlayerAccessHint": "Szabályozza, hogy a játékosok láthatják és kezelhetik-e a hírnév ablakot.",
       "PlayerAccessNone": "Rejtett (csak JM)",
       "PlayerAccessView": "Csak megtekintés",
-      "PlayerAccessEdit": "Megtekintés és szerkesztés"
+      "PlayerAccessEdit": "Megtekintés és szerkesztés",
+
+      "ChangeLogPageSize": "Change log entries per page",
+      "ChangeLogPageSizeHint": "Number of change log entries shown per page in the faction detail view."
     },
 
     "Notifications": {
