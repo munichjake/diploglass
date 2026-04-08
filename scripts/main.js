@@ -1,9 +1,34 @@
 import { registerSettings } from "./config.js";
 import { FactionReputationTracker } from "./models/reputation-tracker.js";
 import { FactionReputationWindow } from "./apps/reputation-window.js";
+import { SavrasLib } from "./savras-lib.min.js";
+
+/**
+ * Opens the Faction Reputation Window, reusing an existing instance if one is active.
+ */
+function openReputationWindow() {
+    try {
+        if (FactionReputationWindow._activeInstance) {
+            FactionReputationWindow._activeInstance.bringToFront();
+            FactionReputationWindow._activeInstance.render(true);
+        } else {
+            new FactionReputationWindow().render(true);
+        }
+    } catch (error) {
+        console.error('DiploGlass | Failed to open reputation window:', error);
+    }
+}
 
 // Make tracker globally available for macros/API usage
 window.FactionReputationTracker = FactionReputationTracker;
+
+// Savras telemetry - anonymous usage statistics (opt-out via module settings)
+export const telemetry = new SavrasLib({
+    moduleId: 'diploglass',
+    telemetryUrl: 'https://savras.dnd-session.de/api/v1/telemetry',
+    consentDefault: true,
+    startupMessage: 'DiploGlass telemetry initialized'
+});
 
 Hooks.once('init', () => {
     registerSettings();
@@ -27,7 +52,7 @@ function _onRenderPlayerList(app, html) {
     const button = container.firstElementChild;
 
     button.addEventListener('click', () => {
-        new FactionReputationWindow().render(true);
+        openReputationWindow();
     });
 
     // html is HTMLElement in V13+/V14 (ApplicationV2), jQuery in V12
@@ -54,7 +79,7 @@ Hooks.on('getSceneControlButtons', (controls) => {
                 name: "faction-reputation",
                 title: "DIPLOGLASS.Controls.OpenWindow",
                 icon: "fas fa-handshake",
-                onClick: () => new FactionReputationWindow().render(true),
+                onClick: () => openReputationWindow(),
                 button: true
             });
         }
@@ -67,12 +92,16 @@ Hooks.on('getSceneControlButtons', (controls) => {
                 icon: "fa-solid fa-handshake",
                 visible: true,
                 button: true,
-                onChange: () => new FactionReputationWindow().render(true)
+                onChange: () => openReputationWindow()
             };
         }
     }
 });
 
+/**
+ * Handlebars Helpers - registered for template use and macro API access.
+ * Available as: {{reputationColor value}}, {{reputationLabel value}}, {{eq a b}}, {{substring str start end}}
+ */
 function registerHandlebarsHelpers() {
     Handlebars.registerHelper('reputationColor', function (level) {
         const levelData = FactionReputationTracker.getReputationLevels().find(l => l.value === level);
@@ -81,14 +110,14 @@ function registerHandlebarsHelpers() {
 
     Handlebars.registerHelper('reputationLabel', function (level) {
         const levelData = FactionReputationTracker.getReputationLevels().find(l => l.value === level);
-        return levelData?.label || 'Unbekannt';
+        return levelData?.label || game.i18n?.localize("DIPLOGLASS.Unknown") || 'Unknown';
     });
 
     Handlebars.registerHelper('eq', function (a, b) {
         return a === b;
     });
 
-    Handlebars.registerHelper('substring', function (str, start, length) {
-        return str ? str.substring(start, length || start + 1) : '';
+    Handlebars.registerHelper('substring', function (str, start, end) {
+        return str ? str.substring(start, end || start + 1) : '';
     });
 }

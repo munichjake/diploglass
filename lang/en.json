@@ -35,6 +35,7 @@
     "GlobalMode": "Global",
     "GroupReputation": "Group Reputation",
     "Factions": "Factions",
+    "ExportFactions": "Export Factions",
     "SearchFactions": "Search factions",
     "SelectFaction": "Select a Faction",
     "SelectFactionHint": "Choose a faction from the sidebar to view and manage its reputation.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "The number of steps must be between 3 and 21.",
       "ErrorChangingReputation": "Error changing reputation.",
       "ErrorSettingReputation": "Error setting reputation.",
-      "ErrorResettingFaction": "Error resetting faction."
+      "ErrorResettingFaction": "Error resetting faction.",
+      "FactionsExported": "Factions exported successfully."
     },
 
     "Dialogs": {

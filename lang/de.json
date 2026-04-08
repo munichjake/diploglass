@@ -35,6 +35,7 @@
     "GlobalMode": "Global",
     "GroupReputation": "Gruppen-Reputation",
     "Factions": "Fraktionen",
+    "ExportFactions": "Fraktionen exportieren",
     "SearchFactions": "Fraktionen suchen",
     "SelectFaction": "Fraktion auswählen",
     "SelectFactionHint": "Wähle eine Fraktion aus der Seitenleiste, um ihre Reputation anzuzeigen und zu verwalten.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "Die Anzahl der Stufen muss zwischen 3 und 21 liegen.",
       "ErrorChangingReputation": "Fehler beim Ändern der Reputation.",
       "ErrorSettingReputation": "Fehler beim Setzen der Reputation.",
-      "ErrorResettingFaction": "Fehler beim Zurücksetzen der Fraktion."
+      "ErrorResettingFaction": "Fehler beim Zurücksetzen der Fraktion.",
+      "FactionsExported": "Fraktionen erfolgreich exportiert."
     },
 
     "Dialogs": {

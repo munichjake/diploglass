@@ -35,6 +35,7 @@
     "GlobalMode": "Globalny",
     "GroupReputation": "Reputacja Grupy",
     "Factions": "Frakcje",
+    "ExportFactions": "Eksportuj frakcje",
     "SearchFactions": "Szukaj frakcji",
     "SelectFaction": "Wybierz Frakcję",
     "SelectFactionHint": "Wybierz frakcję z paska bocznego, aby wyświetlić i zarządzać jej reputacją.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "Liczba kroków musi być między 3 a 21.",
       "ErrorChangingReputation": "Błąd podczas zmiany reputacji.",
       "ErrorSettingReputation": "Błąd podczas ustawiania reputacji.",
-      "ErrorResettingFaction": "Błąd podczas resetowania frakcji."
+      "ErrorResettingFaction": "Błąd podczas resetowania frakcji.",
+      "FactionsExported": "Frakcje zostały pomyślnie wyeksportowane."
     },
 
     "Dialogs": {

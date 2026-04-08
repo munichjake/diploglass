@@ -1,5 +1,8 @@
 import { FactionReputationTracker } from "../models/reputation-tracker.js";
 import { FactionConfigWindow } from "./config-window.js";
+import { escapeHtml } from "./utils/html-helpers.js";
+import { generateBarSegments, getPillClass, formatDisplayValue } from "./utils/reputation-helpers.js";
+import { createAddFactionDialogContent, createAddCommentDialogContent } from "./utils/dialog-templates.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -39,7 +42,8 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
             resetFaction: FactionReputationWindow.prototype._onResetFaction,
             openSettings: FactionReputationWindow.prototype._onOpenSettings,
             switchTab: FactionReputationWindow.prototype._onSwitchTab,
-            addComment: FactionReputationWindow.prototype._onAddComment
+            addComment: FactionReputationWindow.prototype._onAddComment,
+            exportFactions: FactionReputationWindow.prototype._onExportFactions
         }
     };
 
@@ -50,57 +54,36 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
     };
 
     /**
-     * Generate bar segments for a reputation bar
+     * Check whether the current user has edit permission.
+     * GMs always can; non-GMs need the 'edit' playerAccess setting.
+     */
+    _canEdit() {
+        if (game.user.isGM) return true;
+        return game.settings.get('diploglass', 'playerAccess') === 'edit';
+    }
+
+    /**
+     * Generate bar segments for a reputation bar.
+     * Delegates to the extracted utility function.
      */
     _generateBarSegments(steps, minValue, maxValue, currentValue) {
-        const segments = [];
-
-        for (let value = minValue; value <= maxValue; value++) {
-            let color;
-            if (value < 0) {
-                const intensity = Math.abs(value) / Math.abs(minValue);
-                const r = Math.round(139 + (116 * intensity));
-                const g = Math.round(69 - (69 * intensity));
-                const b = Math.round(69 - (69 * intensity));
-                color = `rgb(${r}, ${g}, ${b})`;
-            } else if (value === 0) {
-                color = '#6c757d';
-            } else {
-                const intensity = value / maxValue;
-                const r = Math.round(40 - (40 * intensity));
-                const g = Math.round(167 + (88 * intensity));
-                const b = Math.round(69 - (69 * intensity));
-                color = `rgb(${r}, ${g}, ${b})`;
-            }
-
-            segments.push({
-                value: value,
-                color: color,
-                isCurrent: value === currentValue,
-                isFilled: value <= currentValue
-            });
-        }
-
-        return segments;
+        return generateBarSegments(steps, minValue, maxValue, currentValue);
     }
 
     /**
-     * Get pill class based on reputation value
+     * Get pill class based on reputation value.
+     * Delegates to the extracted utility function.
      */
     _getPillClass(value, minValue, maxValue) {
-        if (value <= minValue) return 'bad';
-        if (value < -1) return 'warn';
-        if (value === 0 || value === -1 || value === 1) return 'neutral';
-        if (value >= maxValue) return 'ally';
-        if (value > 1) return 'good';
-        return 'neutral';
+        return getPillClass(value, minValue, maxValue);
     }
 
     /**
-     * Format display value with + sign for positive numbers
+     * Format display value with + sign for positive numbers.
+     * Delegates to the extracted utility function.
      */
     _formatDisplayValue(value) {
-        return value > 0 ? `+${value}` : `${value}`;
+        return formatDisplayValue(value);
     }
 
     /**
@@ -330,15 +313,15 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
     }
 
     async _onReputationChange(event, target) {
-        const playerAccess = game.settings.get('diploglass', 'playerAccess');
-        if (!game.user.isGM && playerAccess !== 'edit') {
-            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.Notifications.OnlyGMCanChange"));
+        if (!this._canEdit()) {
+            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.NoPermission"));
             return;
         }
 
         const factionId = target.dataset.factionId;
         const userId = target.dataset.userId || 'global';
         const change = parseInt(target.dataset.change);
+        if (isNaN(change)) return;
 
         try {
             await FactionReputationTracker.changeReputation(userId, factionId, change);
@@ -353,18 +336,6 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
         const self = this;
         const defaultSteps = FactionReputationTracker.DEFAULT_STEPS;
 
-        // Build journal options HTML
-        const journalOptions = game.journal.contents
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map(j => `<option value="${j.id}">${j.name}</option>`)
-            .join('');
-
-        // Build RollTable options HTML
-        const rollTableOptions = game.tables.contents
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map(t => `<option value="${t.id}">${t.name}</option>`)
-            .join('');
-
         // Helper function to get or create Diploglass folder
         const getOrCreateFolder = async (type) => {
             const folderName = "Diploglass";
@@ -375,49 +346,19 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
             return folder;
         };
 
+        // Build dialog content from extracted template
+        const dialogContent = createAddFactionDialogContent({
+            journals: game.journal.contents,
+            rollTables: game.tables.contents,
+            defaultSteps: defaultSteps,
+            i18n: game.i18n.localize.bind(game.i18n)
+        });
+
         // Create dialog with manual close handling for validation
         let dialog;
         dialog = new Dialog({
             title: game.i18n.localize("DIPLOGLASS.Dialogs.AddFactionTitle"),
-            content: `
-                <div class="fr-dialog-content">
-                    <div class="fr-dialog-form">
-                        <div class="fr-form-group">
-                            <label>${game.i18n.localize("DIPLOGLASS.Dialogs.AddFactionName")}</label>
-                            <input type="text" name="name" placeholder="${game.i18n.localize("DIPLOGLASS.Dialogs.AddFactionNamePlaceholder")}" required>
-                        </div>
-                        <div class="fr-form-group">
-                            <label>${game.i18n.localize("DIPLOGLASS.Dialogs.AddFactionJournal")}</label>
-                            <div class="fr-input-row">
-                                <select name="journalId">
-                                    <option value="">${game.i18n.localize("DIPLOGLASS.NoJournal")}</option>
-                                    ${journalOptions}
-                                </select>
-                                <button type="button" class="fr-create-btn" data-create="journal" title="${game.i18n.localize("DIPLOGLASS.Dialogs.CreateJournal")}">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="fr-form-group">
-                            <label>${game.i18n.localize("DIPLOGLASS.Dialogs.AddFactionRollTable")}</label>
-                            <div class="fr-input-row">
-                                <select name="rollTableId">
-                                    <option value="">${game.i18n.localize("DIPLOGLASS.NoRollTable")}</option>
-                                    ${rollTableOptions}
-                                </select>
-                                <button type="button" class="fr-create-btn" data-create="rolltable" title="${game.i18n.localize("DIPLOGLASS.Dialogs.CreateRollTable")}">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="fr-form-group">
-                            <label>${game.i18n.localize("DIPLOGLASS.Steps")}</label>
-                            <input type="number" name="steps" value="${defaultSteps}" min="3" max="21" step="2">
-                            <p class="fr-notes">${game.i18n.localize("DIPLOGLASS.StepsHint")}</p>
-                        </div>
-                    </div>
-                </div>
-            `,
+            content: dialogContent,
             buttons: {
                 create: {
                     icon: '<i class="fas fa-check"></i>',
@@ -454,8 +395,13 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
                         }
 
                         // All validation passed - create faction
-                        await FactionReputationTracker.createFaction(name, journalId, true, steps, rollTableId);
-                        self.render();
+                        try {
+                            await FactionReputationTracker.createFaction(name, journalId, true, steps, rollTableId);
+                            self.render(true);
+                        } catch (error) {
+                            console.error('DiploGlass | Failed to create faction:', error);
+                            ui.notifications.error(game.i18n.localize("DIPLOGLASS.ErrorCreatingFaction") || "Failed to create faction");
+                        }
                     }
                 },
                 cancel: {
@@ -482,7 +428,7 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
 
                     // Add to dropdown and select it
                     const select = html.find('[name="journalId"]');
-                    select.append(`<option value="${journal.id}">${journal.name}</option>`);
+                    select.append(`<option value="${journal.id}">${escapeHtml(journal.name)}</option>`);
                     select.val(journal.id);
 
                     ui.notifications.info(game.i18n.format("DIPLOGLASS.Notifications.JournalCreated", { name: journal.name }));
@@ -500,18 +446,7 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
                     const folder = await getOrCreateFolder("RollTable");
 
                     // Generate default entries based on steps
-                    const minValue = FactionReputationTracker.getMinValueForSteps(stepsInput);
-                    const maxValue = FactionReputationTracker.getMaxValueForSteps(stepsInput);
-                    const results = [];
-                    for (let value = minValue; value <= maxValue; value++) {
-                        const label = FactionReputationTracker._generateRankLabel(value, stepsInput);
-                        const color = FactionReputationTracker.getRankColor(value, minValue, maxValue);
-                        results.push({
-                            text: `${label}\n${color}`,
-                            range: [value, value],
-                            weight: 1
-                        });
-                    }
+                    const results = FactionReputationTracker.generateRollTableResults(stepsInput);
 
                     const table = await RollTable.create({
                         name: tableName,
@@ -522,7 +457,7 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
 
                     // Add to dropdown and select it
                     const select = html.find('[name="rollTableId"]');
-                    select.append(`<option value="${table.id}">${table.name}</option>`);
+                    select.append(`<option value="${table.id}">${escapeHtml(table.name)}</option>`);
                     select.val(table.id);
 
                     ui.notifications.info(game.i18n.format("DIPLOGLASS.Notifications.RollTableCreated", { name: table.name }));
@@ -536,6 +471,7 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
         const factionId = target.dataset.factionId;
         const factions = FactionReputationTracker.getFactions();
         const faction = factions[factionId];
+        if (!faction) return;
 
         const deleteContent = game.i18n.format("DIPLOGLASS.Dialogs.DeleteFactionContent", { name: faction.name });
 
@@ -548,8 +484,13 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
         });
 
         if (confirmed) {
-            await FactionReputationTracker.deleteFaction(factionId);
-            this.render();
+            try {
+                await FactionReputationTracker.deleteFaction(factionId);
+                this.render();
+            } catch (error) {
+                console.error('DiploGlass | Failed to delete faction:', error);
+                ui.notifications.error(game.i18n.localize("DIPLOGLASS.ErrorDeletingFaction") || "Failed to delete faction");
+            }
         }
     }
 
@@ -575,15 +516,15 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
     }
 
     async _onSetReputation(event, target) {
-        const playerAccess = game.settings.get('diploglass', 'playerAccess');
-        if (!game.user.isGM && playerAccess !== 'edit') {
-            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.Notifications.OnlyGMCanChange"));
+        if (!this._canEdit()) {
+            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.NoPermission"));
             return;
         }
 
         const factionId = target.dataset.factionId;
         const userId = target.dataset.userId || 'global';
         const value = parseInt(target.value);
+        if (isNaN(value)) return;
 
         try {
             await FactionReputationTracker.setReputation(userId, factionId, value);
@@ -595,15 +536,15 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
     }
 
     async _onSetPreset(event, target) {
-        const playerAccess = game.settings.get('diploglass', 'playerAccess');
-        if (!game.user.isGM && playerAccess !== 'edit') {
-            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.Notifications.OnlyGMCanChange"));
+        if (!this._canEdit()) {
+            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.NoPermission"));
             return;
         }
 
         const factionId = target.dataset.factionId;
         const userId = target.dataset.userId || 'global';
         const value = parseInt(target.dataset.value);
+        if (isNaN(value)) return;
 
         try {
             await FactionReputationTracker.setReputation(userId, factionId, value);
@@ -615,13 +556,14 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
     }
 
     async _onResetFaction(event, target) {
-        const playerAccess = game.settings.get('diploglass', 'playerAccess');
-        if (!game.user.isGM && playerAccess !== 'edit') {
-            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.Notifications.OnlyGMCanChange"));
+        if (!this._canEdit()) {
+            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.NoPermission"));
             return;
         }
 
         const factionId = target.dataset.factionId;
+        const faction = FactionReputationTracker.getFactions()[factionId];
+        if (!faction) return;
 
         const confirmed = await Dialog.confirm({
             title: game.i18n.localize("DIPLOGLASS.ResetFaction"),
@@ -633,7 +575,17 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
 
         if (confirmed) {
             try {
-                await FactionReputationTracker.setReputation('global', factionId, 0);
+                if (FactionReputationTracker.usePerPlayerReputationForFaction(faction)) {
+                    // In per-player mode, reset ALL player reputations for this faction
+                    const playerReps = FactionReputationTracker.getPlayerReputations();
+                    for (const userId of Object.keys(playerReps)) {
+                        if (playerReps[userId]?.[factionId] !== undefined) {
+                            await FactionReputationTracker.setReputation(userId, factionId, 0);
+                        }
+                    }
+                } else {
+                    await FactionReputationTracker.setReputation('global', factionId, 0);
+                }
                 this.render();
             } catch (error) {
                 console.error('FactionReputationTracker | Error resetting faction:', error);
@@ -645,6 +597,14 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
     _onOpenSettings(event, target) {
         // Open the module settings
         game.settings.sheet.render(true, { activeCategory: "diploglass" });
+    }
+
+    _onExportFactions(event, target) {
+        FactionReputationTracker.downloadExport();
+        ui.notifications.info(game.i18n.localize("DIPLOGLASS.Notifications.FactionsExported"));
+
+        // Send telemetry for export action
+        import('../main.js').then(mod => mod.telemetry?.send('export')).catch(() => {});
     }
 
     /**
@@ -678,6 +638,9 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
 
         // Register this instance for cross-window communication
         FactionReputationWindow._activeInstance = this;
+
+        // Send telemetry ping (once per session)
+        import('../main.js').then(mod => mod.telemetry?.send('reputation-window')).catch(() => {});
 
         // Attach search functionality
         const searchInput = this.element.querySelector('#fr-faction-search');
@@ -844,14 +807,11 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
         const entry = entries.find(e => e.id === entryId);
         const currentComment = entry?.comment || '';
 
-        const content = `
-            <div class="fr-dialog-content">
-                <div class="form-group">
-                    <label>${game.i18n.localize("DIPLOGLASS.ChangeLog.AddComment")}</label>
-                    <textarea name="comment" rows="3" style="width:100%">${currentComment}</textarea>
-                </div>
-            </div>
-        `;
+        // Build dialog content from extracted template
+        const content = createAddCommentDialogContent({
+            currentComment: currentComment,
+            i18n: game.i18n.localize.bind(game.i18n)
+        });
 
         new Dialog({
             title: game.i18n.localize("DIPLOGLASS.ChangeLog.AddComment"),
@@ -862,9 +822,9 @@ export class FactionReputationWindow extends HandlebarsApplicationMixin(Applicat
                     label: game.i18n.localize("DIPLOGLASS.Save"),
                     callback: async (html) => {
                         const comment = html.find('[name="comment"]').val().trim();
-                        if (comment) {
-                            await FactionReputationTracker.addCommentToLogEntry(factionId, entryId, comment);
-                            this.render();
+                        if (comment !== null && comment !== undefined) {
+                            await FactionReputationTracker.addCommentToLogEntry(factionId, entryId, comment || '');
+                            this.render(true);
                         }
                     }
                 },

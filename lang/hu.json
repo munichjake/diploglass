@@ -35,6 +35,7 @@
     "GlobalMode": "Globális",
     "GroupReputation": "Csoport Hírnév",
     "Factions": "Frakciók",
+    "ExportFactions": "Frakciók exportálása",
     "SearchFactions": "Frakciók keresése",
     "SelectFaction": "Válassz Frakciót",
     "SelectFactionHint": "Válassz egy frakciót az oldalsávból a hírnév megtekintéséhez és kezeléséhez.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "A lépések számának 3 és 21 között kell lennie.",
       "ErrorChangingReputation": "Hiba a hírnév változtatásakor.",
       "ErrorSettingReputation": "Hiba a hírnév beállításakor.",
-      "ErrorResettingFaction": "Hiba a frakció visszaállításakor."
+      "ErrorResettingFaction": "Hiba a frakció visszaállításakor.",
+      "FactionsExported": "A frakciók sikeresen exportálva."
     },
 
     "Dialogs": {

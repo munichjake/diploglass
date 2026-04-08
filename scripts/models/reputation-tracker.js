@@ -205,9 +205,14 @@ export class FactionReputationTracker {
     }
 
     static async changeReputation(userId, factionId, change) {
+        if (typeof change !== 'number' || isNaN(change)) return null;
 
         // Get faction-specific min/max values
         const faction = this.getFactions()[factionId];
+        if (!faction) {
+            console.warn(`DiploGlass | Faction ${factionId} not found`);
+            return null;
+        }
         const { minValue, maxValue } = this.getFactionBounds(faction);
         const usePerPlayer = this.usePerPlayerReputationForFaction(faction);
 
@@ -255,9 +260,14 @@ export class FactionReputationTracker {
      * @returns {Promise<number>} The new reputation level
      */
     static async setReputation(userId, factionId, value) {
+        if (typeof value !== 'number' || isNaN(value)) return null;
 
         // Get faction-specific min/max values
         const faction = this.getFactions()[factionId];
+        if (!faction) {
+            console.warn(`DiploGlass | Faction ${factionId} not found`);
+            return null;
+        }
         const { minValue, maxValue } = this.getFactionBounds(faction);
         const usePerPlayer = this.usePerPlayerReputationForFaction(faction);
 
@@ -402,6 +412,46 @@ export class FactionReputationTracker {
     }
 
     /**
+     * Get label and color for a reputation value, using the full fallback chain:
+     * 1. RollTable (if configured) — uses text and optional color from the table
+     * 2. Standard levels (only for 7-step factions) — uses default label and color
+     * 3. Generated label + computed color — uses _generateRankLabel and getRankColor
+     * @param {object} faction - The faction object
+     * @param {number} reputationValue - The reputation value
+     * @returns {{label: string, color: string}}
+     */
+    static _getLabelAndColor(faction, reputationValue) {
+        const steps = this.getFactionSteps(faction);
+        const { minValue, maxValue } = this.getFactionBounds(faction);
+
+        // First priority: RollTable-based label/color
+        const detailed = this.getDetailedStatusFromRollTable(faction?.rollTableId, reputationValue);
+        if (detailed?.text) {
+            return {
+                label: detailed.text,
+                color: detailed.color || this.getRankColor(reputationValue, minValue, maxValue)
+            };
+        }
+
+        // Second priority: Standard reputation levels (for default 7-step factions)
+        if (steps === this.DEFAULT_STEPS) {
+            const levelInfo = getReputationLevels().find(l => l.value === reputationValue);
+            if (levelInfo) {
+                return {
+                    label: levelInfo.label,
+                    color: levelInfo.color || this.getRankColor(reputationValue, minValue, maxValue)
+                };
+            }
+        }
+
+        // Third priority: Generated label + computed color
+        return {
+            label: this._generateRankLabel(reputationValue, steps),
+            color: this.getRankColor(reputationValue, minValue, maxValue)
+        };
+    }
+
+    /**
      * Get the rank label for a reputation value.
      * Priority: RollTable text > default reputation levels > generated label
      * @param {object} faction - The faction object with rollTableId, steps, etc.
@@ -409,19 +459,7 @@ export class FactionReputationTracker {
      * @returns {string} The rank label
      */
     static getRankLabel(faction, reputationValue) {
-        // First priority: RollTable text
-        const rollTableText = this.getStatusFromRollTable(faction?.rollTableId, reputationValue);
-        if (rollTableText) return rollTableText;
-
-        // Second priority: Default reputation levels (for standard 7-step factions)
-        const steps = this.getFactionSteps(faction);
-        if (steps === this.DEFAULT_STEPS) {
-            const levelInfo = getReputationLevels().find(l => l.value === reputationValue);
-            if (levelInfo) return levelInfo.label;
-        }
-
-        // Third priority: Generate label based on position for custom step counts
-        return this._generateRankLabel(reputationValue, steps);
+        return this._getLabelAndColor(faction, reputationValue).label;
     }
 
     /**
@@ -446,6 +484,28 @@ export class FactionReputationTracker {
         if (normalized <= 0.75) return game.i18n.localize("DIPLOGLASS.RankLabels.Cordial");
         if (normalized <= 0.9) return game.i18n.localize("DIPLOGLASS.RankLabels.Friendly");
         return game.i18n.localize("DIPLOGLASS.RankLabels.Allied");
+    }
+
+    /**
+     * Generate an array of RollTable result objects for a given step count.
+     * Centralizes the RollTable creation logic used by config-window and reputation-window.
+     * @param {number} steps - Number of reputation steps (must be odd)
+     * @returns {Array<{text: string, range: number[], weight: number}>} Array of RollTable result objects
+     */
+    static generateRollTableResults(steps) {
+        const minValue = this.getMinValueForSteps(steps);
+        const maxValue = this.getMaxValueForSteps(steps);
+        const results = [];
+        for (let value = minValue; value <= maxValue; value++) {
+            const label = this._generateRankLabel(value, steps);
+            const color = this.getRankColor(value, minValue, maxValue);
+            results.push({
+                text: `${label}\n${color}`,
+                range: [value, value],
+                weight: 1
+            });
+        }
+        return results;
     }
 
     /**
@@ -480,9 +540,11 @@ export class FactionReputationTracker {
     static async _sendReputationChangeMessage(userId, factionId, newLevel) {
         const faction = this.getFactions()[factionId];
         const user = game.users.get(userId);
-        const levelInfo = getReputationLevels().find(l => l.value === newLevel);
 
-        if (!faction || !levelInfo) return;
+        if (!faction) return;
+
+        // Resolve label and color via the central fallback chain
+        const { label: levelLabel, color: levelColor } = this._getLabelAndColor(faction, newLevel);
 
         const visibility = this.getChatMessageVisibility();
         let whisperTargets = [];
@@ -503,7 +565,7 @@ export class FactionReputationTracker {
         const unknown = game.i18n.localize("DIPLOGLASS.Chat.Unknown");
 
         let messageText;
-        if (this.usePerPlayerReputation()) {
+        if (this.usePerPlayerReputationForFaction(faction)) {
             messageText = game.i18n.format("DIPLOGLASS.Chat.PlayerWithFaction", {
                 player: user?.name || unknown,
                 faction: faction.name
@@ -514,12 +576,67 @@ export class FactionReputationTracker {
             });
         }
 
-        const content = `<p><strong>${reputationChanged}</strong> ${messageText} <span style="color: ${levelInfo.color}">${levelInfo.label}</span> (${newLevel})</p>`;
+        const content = `<p><strong>${reputationChanged}</strong> ${messageText} <span style="color: ${levelColor}">${levelLabel}</span> (${newLevel})</p>`;
 
         await ChatMessage.create({
             content: content,
             whisper: whisperTargets.length > 0 ? whisperTargets : undefined
         });
+    }
+
+    // Export Methods
+
+    /**
+     * Export faction structures without reputation progress data.
+     * Useful for West Marches campaigns where GMs share faction setups.
+     * @param {string[]} [factionIds] - Optional list of faction IDs to export. Exports all if omitted.
+     * @returns {object} Export data with metadata and faction structures
+     */
+    static exportFactions(factionIds = null) {
+        const factions = this.getFactions();
+        const exportFactions = {};
+
+        const idsToExport = factionIds || Object.keys(factions);
+
+        for (const id of idsToExport) {
+            const faction = factions[id];
+            if (!faction) continue;
+
+            // Export structure only — no reputation values, no changeLog
+            exportFactions[id] = {
+                name: faction.name,
+                steps: faction.steps ?? this.DEFAULT_STEPS,
+                startAtNeutral: faction.startAtNeutral ?? true,
+                usePerPlayerReputation: faction.usePerPlayerReputation ?? false,
+                icon: faction.icon || null,
+                // Note: journalId and rollTableId are world-specific and won't transfer
+            };
+        }
+
+        return {
+            format: 'diploglass-factions',
+            version: 1,
+            exportedAt: new Date().toISOString(),
+            factionCount: Object.keys(exportFactions).length,
+            factions: exportFactions
+        };
+    }
+
+    /**
+     * Trigger a browser download of faction export data as JSON
+     * @param {string[]} [factionIds] - Optional list of faction IDs to export
+     */
+    static downloadExport(factionIds = null) {
+        const data = this.exportFactions(factionIds);
+        const json = JSON.stringify(data, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `diploglass-factions-${new Date().toISOString().slice(0, 10)}.json`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
     // Change Log Methods
@@ -544,6 +661,12 @@ export class FactionReputationTracker {
 
         // Add entry to the beginning of the log (newest first)
         faction.changeLog.unshift(entry);
+
+        // Prevent unbounded growth of the change log
+        const MAX_CHANGELOG_ENTRIES = 100;
+        if (faction.changeLog.length > MAX_CHANGELOG_ENTRIES) {
+            faction.changeLog.length = MAX_CHANGELOG_ENTRIES;
+        }
 
         // Save updated factions
         await this.setFactions(factions);

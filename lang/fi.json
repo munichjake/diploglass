@@ -35,6 +35,7 @@
     "GlobalMode": "Globaali",
     "GroupReputation": "Ryhmän Maine",
     "Factions": "Ryhmittymät",
+    "ExportFactions": "Vie ryhmittymät",
     "SearchFactions": "Etsi ryhmittymiä",
     "SelectFaction": "Valitse Ryhmittymä",
     "SelectFactionHint": "Valitse ryhmittymä sivupalkista nähdäksesi ja hallitaksesi sen mainetta.",
@@ -145,7 +146,8 @@
       "StepsOutOfRange": "Portaiden määrän on oltava välillä 3-21.",
       "ErrorChangingReputation": "Virhe maineen muuttamisessa.",
       "ErrorSettingReputation": "Virhe maineen asettamisessa.",
-      "ErrorResettingFaction": "Virhe ryhmittymän nollaamisessa."
+      "ErrorResettingFaction": "Virhe ryhmittymän nollaamisessa.",
+      "FactionsExported": "Ryhmittymät viety onnistuneesti."
     },
 
     "Dialogs": {

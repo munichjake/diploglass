@@ -44,6 +44,12 @@ export class FactionConfigWindow extends HandlebarsApplicationMixin(ApplicationV
         const factions = FactionReputationTracker.getFactions();
         const faction = factions[this.factionId];
 
+        if (!faction) {
+            ui.notifications.warn("Faction not found");
+            this.close();
+            return {};
+        }
+
         // Ensure faction has steps value (backwards compatibility)
         const factionWithDefaults = {
             ...faction,
@@ -68,26 +74,14 @@ export class FactionConfigWindow extends HandlebarsApplicationMixin(ApplicationV
         const factions = FactionReputationTracker.getFactions();
         const faction = factions[this.factionId];
 
+        if (!faction) return;
+
         // Get current steps value from form or faction
         const stepsInput = this.element.querySelector('#steps');
-        const steps = parseInt(stepsInput?.value) || faction?.steps || FactionReputationTracker.DEFAULT_STEPS;
-
-        const minValue = FactionReputationTracker.getMinValueForSteps(steps);
-        const maxValue = FactionReputationTracker.getMaxValueForSteps(steps);
+        const steps = parseInt(stepsInput?.value, 10) || faction?.steps || FactionReputationTracker.DEFAULT_STEPS;
 
         // Generate default rank labels and colors for each reputation value
-        const results = [];
-        for (let value = minValue; value <= maxValue; value++) {
-            const label = FactionReputationTracker._generateRankLabel(value, steps);
-            const color = FactionReputationTracker.getRankColor(value, minValue, maxValue);
-            // Format: "Label\nColor" - color on second line
-            const text = `${label}\n${color}`;
-            results.push({
-                text: text,
-                range: [value, value],
-                weight: 1
-            });
-        }
+        const results = FactionReputationTracker.generateRollTableResults(steps);
 
         // Create the RollTable
         const tableName = `${faction.name} - ${game.i18n.localize("DIPLOGLASS.RollTable")}`;
@@ -143,9 +137,14 @@ export class FactionConfigWindow extends HandlebarsApplicationMixin(ApplicationV
         if (!preview) return;
 
         if (iconPath) {
-            preview.innerHTML = `<img src="${iconPath}" alt="Faction Icon">`;
+            const img = document.createElement('img');
+            img.src = iconPath;
+            img.alt = 'Faction Icon';
+            preview.replaceChildren(img);
         } else {
-            preview.innerHTML = `<i class="fas fa-flag"></i>`;
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-flag';
+            preview.replaceChildren(icon);
         }
     }
 
@@ -156,13 +155,18 @@ export class FactionConfigWindow extends HandlebarsApplicationMixin(ApplicationV
         const object = formData.object;
 
         // Validate steps value - must be odd number between 3 and 21
-        let steps = parseInt(object.steps) || FactionReputationTracker.DEFAULT_STEPS;
+        let steps = parseInt(object.steps, 10) || FactionReputationTracker.DEFAULT_STEPS;
         if (steps < 3) steps = 3;
         if (steps > 21) steps = 21;
         if (steps % 2 === 0) steps = steps + 1; // Ensure odd number
 
         const factions = FactionReputationTracker.getFactions();
         const faction = factions[this.factionId];
+
+        if (!object.name?.trim()) {
+            ui.notifications.warn(game.i18n.localize("DIPLOGLASS.FactionNameRequired") || "Faction name is required");
+            return;
+        }
 
         faction.name = object.name;
         faction.journalId = object.journalId || null;
