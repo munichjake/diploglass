@@ -38,6 +38,49 @@ Hooks.once('init', () => {
     registerHandlebarsHelpers();
 });
 
+Hooks.once('ready', () => {
+    try {
+        const factions = Object.values(FactionReputationTracker.getFactions());
+        const factionCount = factions.length;
+        if (factionCount === 0) {
+            telemetry?.send('faction-stats', { factionCount: 0 });
+            return;
+        }
+
+        const DEFAULT_STEPS = FactionReputationTracker.DEFAULT_STEPS;
+        const globalPerPlayer = FactionReputationTracker.usePerPlayerReputation();
+
+        let stepSum = 0;
+        let defaultStepsCount = 0;
+        let customStepsCount = 0;
+        let perPlayerFactions = 0;
+        let groupFactions = 0;
+
+        for (const f of factions) {
+            const steps = f?.steps ?? DEFAULT_STEPS;
+            stepSum += steps;
+            if (steps === DEFAULT_STEPS) defaultStepsCount++; else customStepsCount++;
+
+            const perPlayer = typeof f?.usePerPlayerReputation === 'boolean'
+                ? f.usePerPlayerReputation
+                : globalPerPlayer;
+            if (perPlayer) perPlayerFactions++; else groupFactions++;
+        }
+
+        telemetry?.send('faction-stats', {
+            factionCount,
+            avgSteps: Math.round((stepSum / factionCount) * 100) / 100,
+            defaultStepsCount,
+            customStepsCount,
+            perPlayerFactions,
+            groupFactions,
+            globalPerPlayerDefault: globalPerPlayer
+        });
+    } catch (error) {
+        console.error('DiploGlass | Failed to send faction-stats telemetry:', error);
+    }
+});
+
 // Inject reputation button into player list
 // V14 renamed PlayerList to Players, changing the hook from renderPlayerList to renderPlayers
 function _onRenderPlayerList(app, html) {
